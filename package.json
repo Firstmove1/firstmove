@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://arpita2006tiwari-droid.github.io/firstmove",
+  "homepage": "https://Firstmove1.github.io/firstmove",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

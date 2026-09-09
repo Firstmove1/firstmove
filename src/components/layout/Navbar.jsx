@@ -146,9 +146,9 @@ const Navbar = () => {
           <div className="mobile-nav-toggle" style={{ display: 'block' }}>
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              style={{ background: 'none', border: 'none', color: 'var(--ink)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+              style={{ background: 'none', border: 'none', color: 'black', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={24} color="black" /> : <Menu size={24} color="black" />}
             </button>
           </div>
         </div>
