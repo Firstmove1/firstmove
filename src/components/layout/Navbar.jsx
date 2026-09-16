@@ -23,17 +23,10 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { 
-      name: 'Learn a Sport', 
-      path: '/learn-a-sport',
-      dropdown: [
-        { name: 'Private Coaching', path: '/learn-a-sport/private' },
-        { name: 'School Programs', path: '/learn-a-sport/schools' },
-        // { name: 'FirstMove Centres', path: '/learn-a-sport/centres' } Disabled per client request
-      ]
-    },
+    { name: 'Schools', path: '/learn-a-sport/schools' },
+    { name: 'Private Coaching', path: '/learn-a-sport/private' },
     { name: 'Sports', path: '/sports' },
-    { name: 'Blog', path: '/blog' },
+    { name: 'Locker Room', path: '/locker-room' },
     { name: 'About Us', path: '/about' },
     { name: 'Contact Us', path: '/contact' }
   ];

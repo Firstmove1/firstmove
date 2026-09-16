@@ -34,7 +34,7 @@ const AppRoutes = ({ isLoaded }) => {
         <Route path="/sports" element={<Sports />} />
         <Route path="/sports/:id" element={<SportDetail />} />
         
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/locker-room" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/fitness-and-conditioning" element={<FitnessConditioning />} />

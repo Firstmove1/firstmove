@@ -19,9 +19,10 @@ const Footer = () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {[
             { name: 'Home', path: '/' },
-            { name: 'Learn a Sport', path: '/learn-a-sport' },
+            { name: 'Schools', path: '/learn-a-sport/schools' },
+            { name: 'Private Coaching', path: '/learn-a-sport/private' },
             { name: 'Sports', path: '/sports' },
-            { name: 'Blog', path: '/blog' },
+            { name: 'Locker Room', path: '/locker-room' },
             { name: 'About Us', path: '/about' },
             { name: 'Contact Us', path: '/contact' }
           ].map((link, j) => (
@@ -33,6 +34,7 @@ const Footer = () => (
         </div>
       </div>
       
+      {/* 
       <div>
         <div className="eyebrow" style={{ color: 'var(--chalk)', marginBottom: '24px' }}>Learn a Sport</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -48,6 +50,7 @@ const Footer = () => (
           ))}
         </div>
       </div>
+      */}
 
       <div>
         <div className="eyebrow" style={{ color: 'var(--chalk)', marginBottom: '24px' }}>Contact & Social</div>
