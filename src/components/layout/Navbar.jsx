@@ -74,13 +74,16 @@ const Navbar = () => {
           </div>
           
           {/* Desktop Nav */}
-          <div style={{ display: 'none', '@media (min-width: 1024px)': { display: 'flex' }, alignItems: 'center', gap: '20px', flexWrap: 'wrap', justifyContent: 'flex-end' }} className="desktop-nav">
+          <div style={{ display: 'none', '@media (min-width: 1024px)': { display: 'flex' }, alignItems: 'center', gap: '20px', flexWrap: 'nowrap', justifyContent: 'flex-end' }} className="desktop-nav">
             <style>
               {`
                 @media (min-width: 1024px) {
                   .desktop-nav { display: flex !important; }
                   .mobile-nav-toggle { display: none !important; }
                   .mobile-only-flex { display: none !important; }
+                }
+                .desktop-nav a {
+                  white-space: nowrap;
                 }
                 .nav-dropdown-content {
                   display: none;
