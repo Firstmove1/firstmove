@@ -54,16 +54,30 @@ const Navbar = () => {
         borderBottom: scrolled || mobileMenuOpen ? '1px solid var(--panel-2)' : '1px solid transparent',
       }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <img src={logoImg} alt="First Move Logo" style={{ height: '40px', objectFit: 'contain' }} />
+              <img src={logoImg} alt="First Move Logo" style={{ height: '32px', objectFit: 'contain' }} className="nav-logo" />
             </Link>
-            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} />
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: 'var(--chalk)' }}>
+            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} className="nav-divider" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--chalk)' }}>
               <MapPin size={16} color="var(--gold)" />
-              <span className="font-mono" style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mumbai</span>
-              <ChevronDown size={14} color="var(--steel)" />
+              <span className="font-mono nav-mumbai-text" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mumbai</span>
+              <ChevronDown size={14} color="var(--steel)" className="nav-chevron" />
             </div>
+            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} className="nav-divider" />
+            <Link to="/learn-a-sport/private" className="font-mono" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--chalk)', textDecoration: 'none' }}>
+              Learn a Sport
+            </Link>
+            <style>
+              {`
+                @media (max-width: 400px) {
+                  .nav-logo { height: 24px !important; }
+                  .nav-mumbai-text { display: none !important; }
+                  .nav-chevron { display: none !important; }
+                  .nav-divider { margin: 0 4px !important; }
+                }
+              `}
+            </style>
           </div>
           
           {/* Desktop Nav */}
