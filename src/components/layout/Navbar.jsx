@@ -6,8 +6,6 @@ import logoImg from '../../assets/Logo.png';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [learnDropdownOpen, setLearnDropdownOpen] = useState(false);
-  const [headerLearnDropdownOpen, setHeaderLearnDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,20 +17,13 @@ const Navbar = () => {
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-    setLearnDropdownOpen(false);
-    setHeaderLearnDropdownOpen(false);
   }, [location.pathname]);
 
+  // New flat menu per client request (11/09/2026)
   const navLinks = [
     { name: 'Home', path: '/' },
-    { 
-      name: 'Learn a Sport', 
-      path: '/learn-a-sport', 
-      dropdown: [
-        { name: 'Schools', path: '/learn-a-sport/schools' },
-        { name: 'Private Coaching', path: '/learn-a-sport/private' }
-      ]
-    },
+    { name: 'Schools', path: '/learn-a-sport/schools' },
+    { name: 'Private Coaching', path: '/learn-a-sport/private' },
     { name: 'Sports', path: '/sports' },
     { name: 'Locker Room', path: '/locker-room' },
     { name: 'About Us', path: '/about' },
@@ -48,141 +39,78 @@ const Navbar = () => {
   return (
     <>
       <nav style={{
-        position: 'fixed', top: 0, width: '100%', zIndex: 100, padding: '24px 0',
+        position: 'fixed', top: 0, width: '100%', zIndex: 100, padding: '18px 0',
         transition: 'var(--transition-smooth)',
-        backgroundColor: scrolled || mobileMenuOpen ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+        backgroundColor: scrolled || mobileMenuOpen ? 'rgba(255, 255, 255, 0.97)' : 'transparent',
         backdropFilter: scrolled || mobileMenuOpen ? 'blur(24px)' : 'none',
-        borderBottom: scrolled || mobileMenuOpen ? '1px solid var(--panel-2)' : '1px solid transparent',
+        borderBottom: scrolled || mobileMenuOpen ? '1px solid var(--panel-2)' : 'none',
       }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '32px' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '24px' }}>
+          {/* Logo + Location */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <img src={logoImg} alt="First Move Logo" style={{ height: '32px', objectFit: 'contain' }} className="nav-logo" />
+              <img src={logoImg} alt="FirstMove Logo" style={{ height: '32px', objectFit: 'contain' }} className="nav-logo" />
             </Link>
-            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} className="nav-divider" />
+            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} />
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--chalk)' }}>
               <MapPin size={16} color="var(--gold)" />
               <span className="font-mono nav-mumbai-text" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mumbai</span>
               <ChevronDown size={14} color="var(--steel)" className="nav-chevron" />
             </div>
-            
-            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} className="nav-divider mobile-only-flex" />
-            <div className="mobile-only-flex" style={{ position: 'relative', alignItems: 'center' }}>
-              <div 
-                onClick={() => setHeaderLearnDropdownOpen(!headerLearnDropdownOpen)}
-                className="font-mono" 
-                style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--chalk)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}
-              >
-                Learn a Sport <ChevronDown size={14} color="var(--steel)" style={{ transform: headerLearnDropdownOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.3s' }} />
-              </div>
-              
-              {headerLearnDropdownOpen && (
-                <div style={{
-                  position: 'absolute', top: '100%', left: 0, marginTop: '16px',
-                  backgroundColor: 'var(--panel)', minWidth: '180px',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.2)', borderRadius: '8px',
-                  padding: '8px 0', border: '1px solid var(--panel-2)', zIndex: 101
-                }}>
-                  <Link to="/learn-a-sport/schools" onClick={() => setHeaderLearnDropdownOpen(false)} className="font-mono" style={{ display: 'block', padding: '12px 24px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--steel)', textDecoration: 'none' }}>Schools</Link>
-                  <Link to="/learn-a-sport/private" onClick={() => setHeaderLearnDropdownOpen(false)} className="font-mono" style={{ display: 'block', padding: '12px 24px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--steel)', textDecoration: 'none' }}>Private Coaching</Link>
-                </div>
-              )}
-            </div>
-            <style>
-              {`
-                @media (max-width: 400px) {
-                  .nav-logo { height: 24px !important; }
-                  .nav-mumbai-text { display: none !important; }
-                  .nav-chevron { display: none !important; }
-                  .nav-divider { margin: 0 4px !important; }
-                }
-              `}
-            </style>
+            <style>{`
+              @media (max-width: 400px) {
+                .nav-logo { height: 24px !important; }
+                .nav-mumbai-text { display: none !important; }
+                .nav-chevron { display: none !important; }
+              }
+            `}</style>
           </div>
-          
+
           {/* Desktop Nav */}
-          <div style={{ display: 'none', '@media (min-width: 1024px)': { display: 'flex' }, alignItems: 'center', gap: '20px', flexWrap: 'nowrap', justifyContent: 'flex-end' }} className="desktop-nav">
-            <style>
-              {`
-                @media (min-width: 1024px) {
-                  .desktop-nav { display: flex !important; }
-                  .mobile-nav-toggle { display: none !important; }
-                  .mobile-only-flex { display: none !important; }
-                }
-                .desktop-nav a {
-                  white-space: nowrap;
-                }
-                .nav-dropdown-content {
-                  display: none;
-                  position: absolute;
-                  top: 100%;
-                  left: 0;
-                  background-color: var(--panel);
-                  min-width: 200px;
-                  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-                  border-radius: 8px;
-                  padding: 8px 0;
-                  border: 1px solid var(--panel-2);
-                  z-index: 1;
-                }
-                .nav-dropdown:hover .nav-dropdown-content {
-                  display: block;
-                  animation: fade-in 0.2s ease-out forwards;
-                }
-                @keyframes fade-in {
-                  from { opacity: 0; transform: translateY(-10px); }
-                  to { opacity: 1; transform: translateY(0); }
-                }
-                .dropdown-item {
-                  color: var(--steel);
-                  padding: 12px 24px;
-                  text-decoration: none;
-                  display: block;
-                  transition: var(--transition-fast);
-                }
-                .dropdown-item:hover {
-                  background-color: var(--panel-2);
-                  color: var(--chalk);
-                }
-              `}
-            </style>
-            
+          <div className="desktop-nav" style={{ display: 'none', alignItems: 'center', gap: '16px', flexWrap: 'nowrap', justifyContent: 'flex-end' }}>
+            <style>{`
+              @media (min-width: 1024px) {
+                .desktop-nav { display: flex !important; }
+                .mobile-nav-toggle { display: none !important; }
+              }
+              .desktop-nav a { white-space: nowrap; }
+            `}</style>
+
             {navLinks.map((link, idx) => (
-              link.dropdown ? (
-                <div key={idx} className="nav-dropdown" style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center' }}>
-                  <Link to={link.path} className="font-mono" style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.1em', color: getLinkColor(link.path), textDecoration: 'none', transition: 'var(--transition-fast)' }} 
-                    onMouseOver={e => e.target.style.color = 'var(--gold)'} onMouseOut={e => e.target.style.color = getLinkColor(link.path)}>
-                    {link.name} <ChevronDown size={14} />
-                  </Link>
-                  <div className="nav-dropdown-content">
-                    {link.dropdown.map((dropItem, dropIdx) => (
-                      <Link key={dropIdx} to={dropItem.path} className="dropdown-item font-mono" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                        {dropItem.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <Link key={idx} to={link.path} className="font-mono" style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.1em', color: getLinkColor(link.path), textDecoration: 'none', transition: 'var(--transition-fast)' }} 
-                  onMouseOver={e => e.target.style.color = 'var(--gold)'} onMouseOut={e => e.target.style.color = getLinkColor(link.path)}>
-                  {link.name}
-                </Link>
-              )
+              <Link
+                key={idx}
+                to={link.path}
+                className="font-mono"
+                style={{
+                  fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em',
+                  color: getLinkColor(link.path), textDecoration: 'none', transition: 'var(--transition-fast)',
+                  fontWeight: getLinkColor(link.path) === 'var(--gold)' ? 700 : 500,
+                  borderBottom: getLinkColor(link.path) === 'var(--gold)' ? '2px solid var(--gold)' : '2px solid transparent',
+                  paddingBottom: '2px'
+                }}
+                onMouseOver={e => e.currentTarget.style.color = 'var(--gold)'}
+                onMouseOut={e => e.currentTarget.style.color = getLinkColor(link.path)}
+              >
+                {link.name}
+              </Link>
             ))}
-            
+
             <Link to="/contact" style={{
               display: 'inline-block', textDecoration: 'none', textAlign: 'center',
-              backgroundColor: 'var(--gold)', color: 'var(--chalk)', padding: '12px 24px', border: 'none', cursor: 'pointer', borderRadius: '4px',
-              fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
-              transition: 'var(--transition-fast)'
-            }} onMouseOver={e => e.target.style.backgroundColor = '#f0c662'} onMouseOut={e => e.target.style.backgroundColor = 'var(--gold)'}>
+              backgroundColor: 'var(--gold)', color: '#fff', padding: '10px 20px', border: 'none', cursor: 'pointer', borderRadius: '4px',
+              fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
+              transition: 'var(--transition-fast)', whiteSpace: 'nowrap'
+            }}
+              onMouseOver={e => e.currentTarget.style.opacity = '0.85'}
+              onMouseOut={e => e.currentTarget.style.opacity = '1'}
+            >
               Get Started
             </Link>
           </div>
 
           {/* Mobile Toggle */}
           <div className="mobile-nav-toggle" style={{ display: 'block' }}>
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               style={{ background: 'none', border: 'none', color: 'black', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             >
@@ -192,7 +120,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu Content */}
+      {/* Mobile Menu */}
       <div style={{
         position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 99,
         backgroundColor: 'var(--panel)',
@@ -203,40 +131,22 @@ const Navbar = () => {
         <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {navLinks.map((link, idx) => (
             <div key={idx} style={{ borderBottom: '1px solid var(--panel-2)', paddingBottom: '16px' }}>
-              {link.dropdown ? (
-                <>
-                  <div 
-                    onClick={() => setLearnDropdownOpen(!learnDropdownOpen)}
-                    style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
-                  >
-                    <span className="font-display" style={{ fontSize: '32px', color: getLinkColor(link.path) }}>{link.name}</span>
-                    <ChevronDown size={24} color="var(--steel)" style={{ transform: learnDropdownOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.3s' }} />
-                  </div>
-                  <div style={{ 
-                    maxHeight: learnDropdownOpen ? '500px' : '0', 
-                    overflow: 'hidden', 
-                    transition: 'max-height 0.4s ease-in-out',
-                    display: 'flex', flexDirection: 'column', gap: '16px',
-                    marginTop: learnDropdownOpen ? '16px' : '0'
-                  }}>
-                    {link.dropdown.map((dropItem, dropIdx) => (
-                      <Link key={dropIdx} to={dropItem.path} className="font-mono" style={{ fontSize: '16px', color: 'var(--steel)', textDecoration: 'none', paddingLeft: '16px' }}
-                        onClick={() => setMobileMenuOpen(false)}>
-                        — {dropItem.name}
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <Link to={link.path} onClick={() => setMobileMenuOpen(false)} className="font-display" style={{ fontSize: '32px', color: getLinkColor(link.path), textDecoration: 'none', display: 'block' }}>
-                  {link.name}
-                </Link>
-              )}
+              <Link
+                to={link.path}
+                onClick={() => setMobileMenuOpen(false)}
+                className="font-display"
+                style={{
+                  fontSize: '28px', color: getLinkColor(link.path),
+                  textDecoration: 'none', display: 'block'
+                }}
+              >
+                {link.name}
+              </Link>
             </div>
           ))}
           <Link to="/contact" style={{
             display: 'block', textAlign: 'center', textDecoration: 'none',
-            backgroundColor: 'var(--gold)', color: 'var(--chalk)', padding: '16px', border: 'none', cursor: 'pointer', borderRadius: '4px',
+            backgroundColor: 'var(--gold)', color: '#fff', padding: '16px', border: 'none', cursor: 'pointer', borderRadius: '4px',
             fontFamily: 'var(--font-mono)', fontSize: '16px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
             marginTop: '24px'
           }} onClick={() => setMobileMenuOpen(false)}>

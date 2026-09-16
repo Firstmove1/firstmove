@@ -30,22 +30,22 @@ const Schools = () => {
 
   return (
     <div style={{ paddingTop: '80px' }}>
-      
+
       {/* 1. BANNER */}
       <section className="reveal" style={{ padding: '80px 0 60px', backgroundColor: 'var(--panel)' }}>
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', position: 'relative' }}>
           <div style={{ flex: '1 1 500px', height: '600px', borderRadius: '16px', overflow: 'hidden', position: 'relative', boxShadow: '0 24px 60px rgba(0,0,0,0.08)' }}>
-            <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?q=80&w=2940&auto=format&fit=crop" alt="School Sports" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)' }} 
-                 onMouseOver={e => e.target.style.transform = 'scale(1.05)'} onMouseOut={e => e.target.style.transform = 'scale(1)'} />
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2940&auto=format&fit=crop" alt="School Sports" style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)' }}
+              onMouseOver={e => e.target.style.transform = 'scale(1.05)'} onMouseOut={e => e.target.style.transform = 'scale(1)'} />
           </div>
-          
+
           <div className="overlap-card">
             <div className="eyebrow" style={{ color: 'var(--emerald)', marginBottom: '16px' }}>For Schools</div>
             <h1 className="font-display" style={{ fontSize: '56px', marginBottom: '24px', color: 'var(--chalk)', lineHeight: 1.1 }}>Make the next sports star from your school</h1>
             <p style={{ fontSize: '18px', color: 'var(--steel)', marginBottom: '40px', lineHeight: 1.7 }}>
               Partner with FirstMove to provide professional sports coaching, structured curriculums, and a clear development pathway for your students.
             </p>
-            
+
             <Link to="/contact" style={{
               backgroundColor: 'var(--emerald)', color: 'var(--ink)', padding: '16px 32px', border: 'none', cursor: 'pointer',
               borderRadius: '8px', fontFamily: 'var(--font-mono)', fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
@@ -83,15 +83,15 @@ const Schools = () => {
             <div className="eyebrow" style={{ color: 'var(--gold)', marginBottom: '16px' }}>Why FirstMove</div>
             <h2 className="font-display" style={{ fontSize: '48px', color: 'var(--chalk)' }}>School Sports Program</h2>
           </div>
-          
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px' }}>
             {features.map((feature, i) => (
               <div key={i} style={{
                 backgroundColor: 'var(--ink)', padding: '40px 32px', borderRadius: '16px', border: '1px solid var(--panel-2)',
                 display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', transition: 'var(--transition-fast)'
               }}
-              onMouseOver={e => e.currentTarget.style.transform = 'translateY(-8px)'}
-              onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+                onMouseOver={e => e.currentTarget.style.transform = 'translateY(-8px)'}
+                onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
                 <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--panel)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: feature.color, marginBottom: '24px' }}>
                   {feature.icon}
                 </div>
@@ -109,7 +109,7 @@ const Schools = () => {
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
             <h2 className="font-display" style={{ fontSize: '48px', color: 'var(--chalk)' }}>Sports We Offer</h2>
           </div>
-          
+
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center', maxWidth: '1000px', margin: '0 auto' }}>
             {sports.map((sport, i) => (
               <div key={i} style={{
@@ -117,16 +117,16 @@ const Schools = () => {
                 display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', cursor: 'pointer',
                 border: '1px solid var(--panel-2)', transition: 'var(--transition-fast)'
               }}
-              onMouseOver={e => {
-                e.currentTarget.style.borderColor = sport.color;
-                e.currentTarget.style.backgroundColor = 'var(--ink)';
-                e.currentTarget.style.transform = 'translateY(-4px)';
-              }}
-              onMouseOut={e => {
-                e.currentTarget.style.borderColor = 'var(--panel-2)';
-                e.currentTarget.style.backgroundColor = 'var(--panel)';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}>
+                onMouseOver={e => {
+                  e.currentTarget.style.borderColor = sport.color;
+                  e.currentTarget.style.backgroundColor = 'var(--ink)';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.borderColor = 'var(--panel-2)';
+                  e.currentTarget.style.backgroundColor = 'var(--panel)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}>
                 <div style={{ color: sport.color, marginBottom: '16px' }}>
                   {sport.icon}
                 </div>
@@ -148,7 +148,7 @@ const Schools = () => {
             <p style={{ fontSize: '18px', color: 'var(--steel)', lineHeight: 1.7, marginBottom: '32px' }}>
               We help schools and students identify suitable sporting pathways. By understanding student interests and evaluating their strengths, our experts provide tailored guidance to support a long-term, fulfilling sports journey.
             </p>
-            
+
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 40px 0', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {['Understanding student interests', 'Identifying suitable sports', 'Guidance based on strengths', 'Exploring sporting opportunities'].map((item, idx) => (
                 <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -172,7 +172,7 @@ const Schools = () => {
               <div className="eyebrow" style={{ color: 'var(--gold)', marginBottom: '16px' }}>Impact</div>
               <h2 className="font-display" style={{ fontSize: '48px', color: 'var(--chalk)' }}>Success Stories</h2>
             </div>
-            
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
               {[1, 2, 3].map((item, i) => (
                 <div key={i} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--panel-2)', backgroundColor: 'var(--panel)' }}>
@@ -213,15 +213,15 @@ const Schools = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="container" style={{ paddingTop: '80px', borderTop: '1px solid var(--panel-2)' }}>
           <div className="font-mono" style={{ fontSize: '12px', color: 'var(--steel)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '48px' }}>
             Our School Partners
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '48px', flexWrap: 'wrap', opacity: 0.4 }}>
             {[1, 2, 3, 4, 5].map((_, i) => (
-              <div key={i} style={{ 
-                width: '140px', height: '60px', backgroundColor: 'var(--panel-2)', borderRadius: '8px', 
+              <div key={i} style={{
+                width: '140px', height: '60px', backgroundColor: 'var(--panel-2)', borderRadius: '8px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 color: 'var(--steel)', fontSize: '14px', fontWeight: '600', letterSpacing: '0.05em'
               }}>
@@ -239,7 +239,7 @@ const Schools = () => {
           <p style={{ fontSize: '20px', color: 'var(--steel)', lineHeight: 1.6, marginBottom: '48px' }}>
             Experience the FirstMove coaching model firsthand. Let us show you how we can elevate your school's sports program.
           </p>
-          
+
           <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" style={{
               backgroundColor: 'var(--gold)', color: 'var(--ink)', padding: '16px 40px', border: 'none', cursor: 'pointer',
@@ -249,7 +249,7 @@ const Schools = () => {
             }} onMouseOver={e => e.currentTarget.style.transform = 'translateY(-4px)'} onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
               Book a Free Demo <ArrowRight size={18} />
             </Link>
-            
+
             <Link to="/contact" style={{
               backgroundColor: 'transparent', color: 'var(--chalk)', padding: '16px 40px', border: '1px solid var(--chalk)', cursor: 'pointer',
               borderRadius: '8px', fontFamily: 'var(--font-mono)', fontSize: '15px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',

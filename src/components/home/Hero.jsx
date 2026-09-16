@@ -65,7 +65,7 @@ const Hero = ({ isLoaded }) => {
         zIndex: -2,
         transformOrigin: 'center center'
       }} />
-      
+
       <div style={{ position: 'absolute', width: '40vw', height: '40vw', borderRadius: '50%', background: 'var(--gold)', filter: 'blur(80px)', opacity: 0.15, top: '10%', left: '10%', animation: 'orb-drift 14s ease-in-out infinite alternate', zIndex: -2 }} />
       <div style={{ position: 'absolute', width: '30vw', height: '30vw', borderRadius: '50%', background: 'var(--sapphire)', filter: 'blur(60px)', opacity: 0.15, bottom: '20%', right: '10%', animation: 'orb-drift 16s ease-in-out infinite alternate-reverse', zIndex: -2 }} />
 
@@ -76,10 +76,10 @@ const Hero = ({ isLoaded }) => {
         transition: 'left 0.15s ease-out, top 0.15s ease-out', opacity: 0.3
       }} />
 
-      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.15, zIndex: -2 }} viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
-        <rect x="50" y="50" width="900" height="500" fill="none" stroke="var(--steel)" strokeWidth="2" strokeDasharray="2000" style={{ animation: 'svg-draw 3.5s ease-out forwards' }} />
-        <line x1="500" y1="50" x2="500" y2="550" stroke="var(--steel)" strokeWidth="2" strokeDasharray="2000" style={{ animation: 'svg-draw 3.5s ease-out forwards' }} />
-        <circle cx="500" cy="300" r="80" fill="none" stroke="var(--steel)" strokeWidth="2" strokeDasharray="2000" style={{ animation: 'svg-draw 3.5s ease-out forwards' }} />
+      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.15, zIndex: -2 }} viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice">
+        <rect x="50" y="180" width="900" height="470" fill="none" stroke="var(--steel)" strokeWidth="2" strokeDasharray="2000" style={{ animation: 'svg-draw 3.5s ease-out forwards' }} />
+        <line x1="500" y1="180" x2="500" y2="650" stroke="var(--steel)" strokeWidth="2" strokeDasharray="2000" style={{ animation: 'svg-draw 3.5s ease-out forwards' }} />
+        <circle cx="500" cy="415" r="80" fill="none" stroke="var(--steel)" strokeWidth="2" strokeDasharray="2000" style={{ animation: 'svg-draw 3.5s ease-out forwards' }} />
       </svg>
 
       {particles.map(p => (
@@ -92,20 +92,20 @@ const Hero = ({ isLoaded }) => {
 
       <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-          
+
           <div className="eyebrow" style={{ color: 'var(--gold)', marginBottom: '24px', opacity: isLoaded ? 1 : 0, transform: isLoaded ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out 0.2s' }}>
             Premium Sports Coaching & Academy
           </div>
-          
+
           <h1 className="font-display" style={{ fontSize: 'clamp(56px, 9vw, 110px)', marginBottom: '24px', opacity: isLoaded ? 1 : 0, transform: isLoaded ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out 0.4s' }}>
-            LEARN. PLAY. TRAIN. <br/> <span style={{ color: 'var(--gold)' }}>COMPETE. GROW.</span>
+            LEARN. PLAY. TRAIN. <br /> <span style={{ color: 'var(--gold)' }}>COMPETE. GROW.</span>
           </h1>
-          
+
           <p style={{ fontSize: '20px', color: 'var(--steel)', marginBottom: '48px', maxWidth: '700px', margin: '0 auto 48px', opacity: isLoaded ? 1 : 0, transform: isLoaded ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out 0.6s' }}>
             Elevate your game with elite coaches, structured programs for all ages, and world-class facilities. It's time to make your First Move.
           </p>
 
-          <div style={{ 
+          <div style={{
             display: 'flex', gap: '24px', justifyContent: 'center',
             opacity: isLoaded ? 1 : 0, transform: isLoaded ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out 0.8s'
           }}>
@@ -116,7 +116,7 @@ const Hero = ({ isLoaded }) => {
             }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
               Explore Sports
             </Link>
-            
+
             <Link to="/learn-a-sport" style={{
               backgroundColor: 'transparent', color: 'var(--chalk)', padding: '16px 32px', border: '1px solid var(--panel-2)',
               borderRadius: '8px', fontFamily: 'var(--font-mono)', fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',

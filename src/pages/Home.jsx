@@ -35,16 +35,16 @@ const FeaturedVenues = () => {
               backgroundColor: 'var(--panel)', borderRadius: '12px', border: '1px solid var(--panel-2)',
               transition: 'var(--transition-smooth)', cursor: 'pointer'
             }}
-            onMouseOver={e => {
-              e.currentTarget.style.transform = 'translateY(-8px)';
-              e.currentTarget.style.boxShadow = `0 24px 40px ${venue.accentDim}`;
-              e.currentTarget.querySelector('img').style.filter = 'grayscale(0%) scale(1.05)';
-            }}
-            onMouseOut={e => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-              e.currentTarget.querySelector('img').style.filter = 'grayscale(15%) scale(1)';
-            }}>
+              onMouseOver={e => {
+                e.currentTarget.style.transform = 'translateY(-8px)';
+                e.currentTarget.style.boxShadow = `0 24px 40px ${venue.accentDim}`;
+                e.currentTarget.querySelector('img').style.filter = 'grayscale(0%) scale(1.05)';
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.querySelector('img').style.filter = 'grayscale(15%) scale(1)';
+              }}>
               <div style={{ overflow: 'hidden', height: '260px', borderRadius: '10px 10px 0 0' }}>
                 <img src={venue.image} alt={venue.name} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(15%)', transition: 'var(--transition-smooth)' }} />
               </div>
@@ -53,7 +53,7 @@ const FeaturedVenues = () => {
                   {venue.sport}
                 </div>
                 <h3 className="font-display" style={{ fontSize: '32px', marginBottom: '16px' }}>{venue.name}</h3>
-                
+
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', color: 'var(--steel)', marginBottom: '24px', fontSize: '14px' }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--gold)' }}><Star size={16} fill="var(--gold)" /> {venue.rating}</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><MapPin size={16} /> {venue.area} ({venue.dist})</span>
@@ -96,23 +96,23 @@ const Pricing = () => {
               borderRadius: '16px', padding: '48px 32px', position: 'relative', overflow: 'hidden',
               border: tier.popular ? 'none' : `1px solid ${tier.accentDim}`, transition: 'var(--transition-smooth)'
             }}
-            onMouseOver={e => {
-              e.currentTarget.style.transform = 'translateY(-12px)';
-              e.currentTarget.style.boxShadow = `0 32px 60px ${tier.accentDim}`;
-            }}
-            onMouseOut={e => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
+              onMouseOver={e => {
+                e.currentTarget.style.transform = 'translateY(-12px)';
+                e.currentTarget.style.boxShadow = `0 32px 60px ${tier.accentDim}`;
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}>
               <div style={{ position: 'absolute', top: '-20%', right: '-20%', width: '150px', height: '150px', background: `radial-gradient(circle, ${tier.accentDim} 0%, transparent 70%)`, filter: 'blur(40px)' }} />
-              
+
               {tier.popular && <div className="font-mono" style={{ position: 'absolute', top: '24px', right: '24px', backgroundColor: 'var(--gold)', color: 'var(--chalk)', padding: '4px 12px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', borderRadius: '4px', fontWeight: 700 }}>Most Chosen</div>}
               {tier.invite && <div className="font-mono" style={{ position: 'absolute', top: '24px', right: '24px', backgroundColor: 'var(--ruby)', color: 'var(--ink)', padding: '4px 12px', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', borderRadius: '4px', fontWeight: 700 }}>Invite Only</div>}
 
               <h3 className="font-display" style={{ fontSize: '32px', color: tier.accent, marginBottom: '16px' }}>{tier.name}</h3>
               <div className="font-mono" style={{ fontSize: '48px', color: 'var(--chalk)', marginBottom: '24px' }}>{tier.price}</div>
               <p style={{ color: 'var(--steel)', fontSize: '16px', marginBottom: '48px', lineHeight: 1.6 }}>{tier.desc}</p>
-              
+
               <button style={{
                 width: '100%', padding: '16px', border: `1px solid ${tier.accent}`, borderRadius: '4px', cursor: 'pointer',
                 color: tier.accent, fontFamily: 'var(--font-mono)', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.1em', backgroundColor: 'transparent',
@@ -132,24 +132,24 @@ const AppBanner = () => (
   <section className="reveal" style={{ padding: '120px 0', background: 'linear-gradient(135deg, #E8F0FA 0%, #FDF4E5 100%)' }}>
     <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '64px', alignItems: 'center' }}>
       <div>
-        <h2 className="font-display" style={{ fontSize: '64px', marginBottom: '24px', color: 'var(--ink)' }}>BOOK FASTER<br/>ON THE APP</h2>
+        <h2 className="font-display" style={{ fontSize: '64px', marginBottom: '24px', color: 'var(--ink)' }}>BOOK FASTER<br />ON THE APP</h2>
         <p style={{ fontSize: '20px', color: '#555', marginBottom: '40px', lineHeight: 1.6 }}>
           Get exclusive app-only drops, manage your reservations seamlessly, and track your game performance.
         </p>
         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
           <div style={{ padding: '12px 24px', backgroundColor: 'var(--ink)', border: '1px solid var(--panel-2)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}>
-             <Smartphone size={24} color="var(--gold)" />
-             <div>
-               <div style={{ fontSize: '10px', color: 'var(--steel)' }}>GET IT ON</div>
-               <div style={{ fontWeight: 700, fontSize: '14px', color: 'var(--chalk)' }}>Google Play</div>
-             </div>
+            <Smartphone size={24} color="var(--gold)" />
+            <div>
+              <div style={{ fontSize: '10px', color: 'var(--steel)' }}>GET IT ON</div>
+              <div style={{ fontWeight: 700, fontSize: '14px', color: 'var(--chalk)' }}>Google Play</div>
+            </div>
           </div>
           <div style={{ padding: '12px 24px', backgroundColor: 'var(--ink)', border: '1px solid var(--panel-2)', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}>
-             <Smartphone size={24} color="var(--gold)" />
-             <div>
-               <div style={{ fontSize: '10px', color: 'var(--steel)' }}>Download on the</div>
-               <div style={{ fontWeight: 700, fontSize: '14px', color: 'var(--chalk)' }}>App Store</div>
-             </div>
+            <Smartphone size={24} color="var(--gold)" />
+            <div>
+              <div style={{ fontSize: '10px', color: 'var(--steel)' }}>Download on the</div>
+              <div style={{ fontWeight: 700, fontSize: '14px', color: 'var(--chalk)' }}>App Store</div>
+            </div>
           </div>
         </div>
       </div>
@@ -173,10 +173,10 @@ const Home = ({ isLoaded }) => {
       <CoachingBlocks />
       <Services />
       <WhoWeServe />
-      <FeaturedVenues />
-      <Pricing />
+      {/* <FeaturedVenues /> — Disabled per client request (task #9: Curated Spaces) */}
+      {/* <Pricing /> — Disabled per client request (task #9: Membership) */}
       <Testimonial />
-      {/* <AppBanner /> Disabled per client request */}
+      {/* <AppBanner /> — Disabled per client request (task #12) */}
       <GetInTouchBanner />
     </div>
   );
