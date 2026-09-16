@@ -1,6 +1,7 @@
 import React from 'react';
 import { Target, Activity, Users, Waves, CheckCircle2, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logoImg from '../../assets/Logo.png';
 
 const Services = () => {
   const services = [
@@ -40,7 +41,7 @@ const Services = () => {
                   display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold)',
                   marginBottom: '24px', border: '1px solid var(--panel-2)'
                 }}>
-                  {service.icon}
+                  <img src={logoImg} alt="FirstMove" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
                 </div>
                 <h3 className="font-display" style={{ fontSize: '24px', marginBottom: '16px', color: 'var(--chalk)' }}>{service.name}</h3>
                 <p style={{ color: 'var(--steel)', fontSize: '15px', lineHeight: 1.6 }}>{service.desc}</p>
