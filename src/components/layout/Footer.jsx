@@ -34,14 +34,12 @@ const Footer = () => (
         </div>
       </div>
       
-      {/* 
       <div>
-        <div className="eyebrow" style={{ color: 'var(--chalk)', marginBottom: '24px' }}>Learn a Sport</div>
+        <div className="eyebrow" style={{ color: 'var(--chalk)', marginBottom: '24px' }}>Legal</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {[
-            { name: 'Private Coaching', path: '/learn-a-sport/private' },
-            { name: 'School Programs', path: '/learn-a-sport/schools' },
-            // { name: 'FirstMove Centres', path: '/learn-a-sport/centres' } Disabled
+            { name: 'Privacy Policy', path: '/privacy' },
+            { name: 'Terms of Service', path: '/terms' }
           ].map((link, j) => (
             <Link key={j} to={link.path} className="font-mono" style={{ fontSize: '13px', color: 'var(--steel)', textDecoration: 'none', transition: 'var(--transition-fast)' }}
                onMouseOver={e => e.target.style.color = 'var(--chalk)'} onMouseOut={e => e.target.style.color = 'var(--steel)'}>
@@ -50,7 +48,6 @@ const Footer = () => (
           ))}
         </div>
       </div>
-      */}
 
       <div>
         <div className="eyebrow" style={{ color: 'var(--chalk)', marginBottom: '24px' }}>Contact & Social</div>
@@ -71,12 +68,8 @@ const Footer = () => (
       </div>
       
     </div>
-    <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '40px', borderTop: '1px solid var(--panel-2)', color: 'var(--steel)', fontSize: '12px' }}>
+    <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '40px', borderTop: '1px solid var(--panel-2)', color: 'var(--steel)', fontSize: '12px' }}>
       <div className="font-mono">© 2026 FirstMove.co.in. All rights reserved.</div>
-      <div style={{ display: 'flex', gap: '24px' }}>
-        <Link to="/privacy" className="font-mono" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy</Link>
-        <Link to="/terms" className="font-mono" style={{ color: 'inherit', textDecoration: 'none' }}>Terms</Link>
-      </div>
     </div>
   </footer>
 );
