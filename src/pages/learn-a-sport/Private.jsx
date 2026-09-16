@@ -192,7 +192,7 @@ const Private = () => {
               <p style={{ color: 'var(--steel)', fontSize: '16px', lineHeight: 1.6, marginBottom: '32px' }}>
                 Whether you're picking up a racquet for the first time or returning to a sport, our adult sessions are tailored to your pace and goals. <strong style={{ color: 'var(--chalk)' }}>Improve your game</strong> with targeted drills and match-play strategies.
               </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 40px 0', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0', display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {['Learn or relearn fundamentals', 'Improve your game tactically', 'Build consistency with flexible training', 'Fitness and conditioning through sport', 'Goal-based coaching'].map((item, idx) => (
                   <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <div style={{ width: '8px', height: '8px', backgroundColor: 'var(--gold)', borderRadius: '50%' }}></div>
@@ -200,6 +200,9 @@ const Private = () => {
                   </li>
                 ))}
               </ul>
+              <p style={{ color: 'var(--gold)', fontSize: '16px', fontWeight: 600, marginBottom: '32px' }}>
+                We provide a marker for improving your game.
+              </p>
               <Link to="/contact" style={{
                 backgroundColor: 'var(--gold)', color: 'var(--ink)', padding: '16px 24px', border: 'none', cursor: 'pointer',
                 borderRadius: '8px', fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
