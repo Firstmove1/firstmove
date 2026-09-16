@@ -13,6 +13,7 @@ import SportDetail from './pages/SportDetail';
 import Blog from './pages/Blog';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import FitnessConditioning from './pages/FitnessConditioning';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import './index.css';
 
@@ -36,6 +37,7 @@ const AppRoutes = ({ isLoaded }) => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/fitness-and-conditioning" element={<FitnessConditioning />} />
       </Routes>
       <Footer />
     </>
