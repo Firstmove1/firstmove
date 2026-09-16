@@ -39,8 +39,8 @@ const Navbar = () => {
   ];
 
   const getLinkColor = (path) => {
-    if (path === '/' && location.pathname === '/') return 'var(--chalk)';
-    if (path !== '/' && location.pathname.startsWith(path)) return 'var(--chalk)';
+    if (path === '/' && location.pathname === '/') return 'var(--gold)';
+    if (path !== '/' && location.pathname.startsWith(path)) return 'var(--gold)';
     return 'var(--steel)';
   };
 
@@ -127,7 +127,7 @@ const Navbar = () => {
               link.dropdown ? (
                 <div key={idx} className="nav-dropdown" style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center' }}>
                   <Link to={link.path} className="font-mono" style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.1em', color: getLinkColor(link.path), textDecoration: 'none', transition: 'var(--transition-fast)' }} 
-                    onMouseOver={e => e.target.style.color = 'var(--chalk)'} onMouseOut={e => e.target.style.color = getLinkColor(link.path)}>
+                    onMouseOver={e => e.target.style.color = 'var(--gold)'} onMouseOut={e => e.target.style.color = getLinkColor(link.path)}>
                     {link.name} <ChevronDown size={14} />
                   </Link>
                   <div className="nav-dropdown-content">
@@ -140,7 +140,7 @@ const Navbar = () => {
                 </div>
               ) : (
                 <Link key={idx} to={link.path} className="font-mono" style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.1em', color: getLinkColor(link.path), textDecoration: 'none', transition: 'var(--transition-fast)' }} 
-                  onMouseOver={e => e.target.style.color = 'var(--chalk)'} onMouseOut={e => e.target.style.color = getLinkColor(link.path)}>
+                  onMouseOver={e => e.target.style.color = 'var(--gold)'} onMouseOut={e => e.target.style.color = getLinkColor(link.path)}>
                   {link.name}
                 </Link>
               )
@@ -185,7 +185,7 @@ const Navbar = () => {
                     onClick={() => setLearnDropdownOpen(!learnDropdownOpen)}
                     style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
                   >
-                    <span className="font-display" style={{ fontSize: '32px', color: 'var(--chalk)' }}>{link.name}</span>
+                    <span className="font-display" style={{ fontSize: '32px', color: getLinkColor(link.path) }}>{link.name}</span>
                     <ChevronDown size={24} color="var(--steel)" style={{ transform: learnDropdownOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.3s' }} />
                   </div>
                   <div style={{ 
@@ -196,14 +196,15 @@ const Navbar = () => {
                     marginTop: learnDropdownOpen ? '16px' : '0'
                   }}>
                     {link.dropdown.map((dropItem, dropIdx) => (
-                      <Link key={dropIdx} to={dropItem.path} className="font-mono" style={{ fontSize: '16px', color: 'var(--steel)', textDecoration: 'none', paddingLeft: '16px' }}>
+                      <Link key={dropIdx} to={dropItem.path} className="font-mono" style={{ fontSize: '16px', color: 'var(--steel)', textDecoration: 'none', paddingLeft: '16px' }}
+                        onClick={() => setMobileMenuOpen(false)}>
                         — {dropItem.name}
                       </Link>
                     ))}
                   </div>
                 </>
               ) : (
-                <Link to={link.path} className="font-display" style={{ fontSize: '32px', color: 'var(--chalk)', textDecoration: 'none', display: 'block' }}>
+                <Link to={link.path} onClick={() => setMobileMenuOpen(false)} className="font-display" style={{ fontSize: '32px', color: getLinkColor(link.path), textDecoration: 'none', display: 'block' }}>
                   {link.name}
                 </Link>
               )}
