@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Target, Activity, Users, Waves, ChevronDown, CheckCircle2, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Sports = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [activeSport, setActiveSport] = useState('tennis');
+  const location = useLocation();
+  const [activeSport, setActiveSport] = useState(location.state?.activeSport || 'tennis');
   const [activeFaq, setActiveFaq] = useState(null);
 
   // Reusable Playbook Data Structure
