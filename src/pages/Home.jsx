@@ -176,7 +176,7 @@ const Home = ({ isLoaded }) => {
       <FeaturedVenues />
       <Pricing />
       <Testimonial />
-      <AppBanner />
+      {/* <AppBanner /> Disabled per client request */}
       <GetInTouchBanner />
     </div>
   );

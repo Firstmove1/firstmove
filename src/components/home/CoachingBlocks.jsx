@@ -20,6 +20,7 @@ const CoachingBlocks = () => {
       path: '/learn-a-sport/schools',
       image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=2940&auto=format&fit=crop'
     },
+    /* Disabled per client request
     { 
       title: 'FirstMove Centres', 
       desc: 'Dedicated sports training centres for regular coaching. Multiple sports, age-specific batches, and a vibrant community environment.',
@@ -28,6 +29,7 @@ const CoachingBlocks = () => {
       path: '/learn-a-sport/centres',
       image: 'https://images.unsplash.com/photo-1526676037777-05a232554f77?q=80&w=2940&auto=format&fit=crop'
     }
+    */
   ];
 
   return (

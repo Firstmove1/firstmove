@@ -147,8 +147,9 @@ const Contact = () => {
                   <option value="" disabled>Select an option</option>
                   <option value="Private Coaching">Private Coaching</option>
                   <option value="School Programs">School Programs</option>
-                  <option value="FirstMove Centres">FirstMove Centres</option>
+                  {/* <option value="FirstMove Centres">FirstMove Centres</option> Disabled per client request */}
                   <option value="Sports">Sports</option>
+                  <option value="Corporate Events">Corporate Events</option>
                   <option value="Partnership">Partnership</option>
                   <option value="General Enquiry">General Enquiry</option>
                 </select>

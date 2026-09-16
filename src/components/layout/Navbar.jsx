@@ -27,9 +27,9 @@ const Navbar = () => {
       name: 'Learn a Sport', 
       path: '/learn-a-sport',
       dropdown: [
-        { name: 'Private', path: '/learn-a-sport/private' },
-        { name: 'Schools', path: '/learn-a-sport/schools' },
-        { name: 'FirstMove Centres', path: '/learn-a-sport/centres' }
+        { name: 'Private Coaching', path: '/learn-a-sport/private' },
+        { name: 'School Programs', path: '/learn-a-sport/schools' },
+        // { name: 'FirstMove Centres', path: '/learn-a-sport/centres' } Disabled per client request
       ]
     },
     { name: 'Sports', path: '/sports' },

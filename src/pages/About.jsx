@@ -22,7 +22,7 @@ const About = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '48px' }}>
             {[
               { name: '[Owner Name 1]', title: 'Co-Founder & CEO', bio: 'With over 15 years in sports management, [Owner 1] envisioned FirstMove as a platform to bridge the gap between amateur enthusiasts and professional-grade facilities. A former state-level athlete who understands the importance of early coaching.', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2787&auto=format&fit=crop' },
-              { name: '[Owner Name 2]', title: 'Co-Founder & COO', bio: '[Owner 2] brings a wealth of experience in operations and customer experience. Passionate about grassroots sports development, they focus on ensuring that every FirstMove centre operates at the highest standard of excellence.', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2788&auto=format&fit=crop' }
+              { name: '[Owner Name 2]', title: 'Co-Founder & COO', bio: '[Owner 2] brings a wealth of experience in operations and customer experience. Passionate about grassroots sports development, they focus on ensuring that every FirstMove program operates at the highest standard of excellence.', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2788&auto=format&fit=crop' }
             ].map((owner, i) => (
               <div key={i} style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
                 <div style={{ width: '120px', height: '120px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0, border: '2px solid var(--gold)' }}>

@@ -39,7 +39,7 @@ const Footer = () => (
           {[
             { name: 'Private Coaching', path: '/learn-a-sport/private' },
             { name: 'School Programs', path: '/learn-a-sport/schools' },
-            { name: 'FirstMove Centres', path: '/learn-a-sport/centres' }
+            // { name: 'FirstMove Centres', path: '/learn-a-sport/centres' } Disabled
           ].map((link, j) => (
             <Link key={j} to={link.path} className="font-mono" style={{ fontSize: '13px', color: 'var(--steel)', textDecoration: 'none', transition: 'var(--transition-fast)' }}
                onMouseOver={e => e.target.style.color = 'var(--chalk)'} onMouseOut={e => e.target.style.color = 'var(--steel)'}>

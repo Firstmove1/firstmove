@@ -21,7 +21,7 @@ const Testimonial = () => (
       </div>
     </div>
     
-    {/* Partners Section */}
+    {/* Partners Section - Disabled per client request until 6+ clients are acquired 
     <div className="container" style={{ padding: '48px 0', textAlign: 'center' }}>
       <div className="font-mono" style={{ fontSize: '12px', color: 'var(--steel)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '32px' }}>
         Trusted by Schools and Partners
@@ -38,6 +38,7 @@ const Testimonial = () => (
         ))}
       </div>
     </div>
+    */}
   </section>
 );
 
