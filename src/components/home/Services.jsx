@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Activity, Users, Waves, CheckCircle2 } from 'lucide-react';
+import { Target, Activity, Users, Waves, CheckCircle2, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
@@ -8,7 +8,7 @@ const Services = () => {
     { name: 'Private Training', icon: <Activity size={24} />, desc: 'Personalized 1-on-1 sessions designed to accelerate your growth.' },
     { name: 'School Programs', icon: <Users size={24} />, desc: 'Comprehensive sports curriculums tailored for educational institutions.' },
     { name: 'Fitness & Conditioning', icon: <Waves size={24} />, desc: 'Strength, agility, and endurance training for peak performance.' },
-    { name: 'Competition Prep', icon: <Target size={24} />, desc: 'Intensive training camps for tournament readiness.' },
+    { name: 'Corporate Sports Events', icon: <Briefcase size={24} />, desc: 'Custom tournaments and sports days for team building and engagement.' },
     { name: 'Community Sports', icon: <Users size={24} />, desc: 'Group sessions and leagues to foster community engagement.' }
   ];
 
