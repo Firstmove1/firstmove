@@ -7,6 +7,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [learnDropdownOpen, setLearnDropdownOpen] = useState(false);
+  const [headerLearnDropdownOpen, setHeaderLearnDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const Navbar = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
     setLearnDropdownOpen(false);
+    setHeaderLearnDropdownOpen(false);
   }, [location.pathname]);
 
   const navLinks = [
@@ -62,6 +64,29 @@ const Navbar = () => {
               <MapPin size={16} color="var(--gold)" />
               <span className="font-mono nav-mumbai-text" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mumbai</span>
               <ChevronDown size={14} color="var(--steel)" className="nav-chevron" />
+            </div>
+            
+            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} className="nav-divider mobile-only-flex" />
+            <div className="mobile-only-flex" style={{ position: 'relative', alignItems: 'center' }}>
+              <div 
+                onClick={() => setHeaderLearnDropdownOpen(!headerLearnDropdownOpen)}
+                className="font-mono" 
+                style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--chalk)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}
+              >
+                Learn a Sport <ChevronDown size={14} color="var(--steel)" style={{ transform: headerLearnDropdownOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.3s' }} />
+              </div>
+              
+              {headerLearnDropdownOpen && (
+                <div style={{
+                  position: 'absolute', top: '100%', left: 0, marginTop: '16px',
+                  backgroundColor: 'var(--panel)', minWidth: '180px',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.2)', borderRadius: '8px',
+                  padding: '8px 0', border: '1px solid var(--panel-2)', zIndex: 101
+                }}>
+                  <Link to="/learn-a-sport/schools" onClick={() => setHeaderLearnDropdownOpen(false)} className="font-mono" style={{ display: 'block', padding: '12px 24px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--steel)', textDecoration: 'none' }}>Schools</Link>
+                  <Link to="/learn-a-sport/private" onClick={() => setHeaderLearnDropdownOpen(false)} className="font-mono" style={{ display: 'block', padding: '12px 24px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--steel)', textDecoration: 'none' }}>Private Coaching</Link>
+                </div>
+              )}
             </div>
             <style>
               {`
