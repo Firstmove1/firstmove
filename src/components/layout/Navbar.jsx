@@ -57,8 +57,8 @@ const Navbar = () => {
               <span className="font-mono nav-mumbai-text" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mumbai</span>
               <ChevronDown size={14} color="var(--steel)" className="nav-chevron" />
             </div>
-            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} className="nav-divider" />
-            <Link to="/learn-a-sport/private" className="font-mono" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--chalk)', textDecoration: 'none' }}>
+            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} className="nav-divider mobile-only-flex" />
+            <Link to="/learn-a-sport/private" className="font-mono mobile-only-flex" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--chalk)', textDecoration: 'none', whiteSpace: 'nowrap' }}>
               Learn a Sport
             </Link>
             <style>
@@ -80,6 +80,7 @@ const Navbar = () => {
                 @media (min-width: 1024px) {
                   .desktop-nav { display: flex !important; }
                   .mobile-nav-toggle { display: none !important; }
+                  .mobile-only-flex { display: none !important; }
                 }
                 .nav-dropdown-content {
                   display: none;
