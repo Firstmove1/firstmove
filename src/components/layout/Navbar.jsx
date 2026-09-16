@@ -46,8 +46,8 @@ const Navbar = () => {
         backdropFilter: scrolled || mobileMenuOpen ? 'blur(24px)' : 'none',
         borderBottom: scrolled || mobileMenuOpen ? '1px solid var(--panel-2)' : '1px solid transparent',
       }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '32px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
               <img src={logoImg} alt="First Move Logo" style={{ height: '32px', objectFit: 'contain' }} className="nav-logo" />
             </Link>
@@ -74,7 +74,7 @@ const Navbar = () => {
           </div>
           
           {/* Desktop Nav */}
-          <div style={{ display: 'none', '@media (min-width: 1024px)': { display: 'flex' }, alignItems: 'center', gap: '32px' }} className="desktop-nav">
+          <div style={{ display: 'none', '@media (min-width: 1024px)': { display: 'flex' }, alignItems: 'center', gap: '20px', flexWrap: 'wrap', justifyContent: 'flex-end' }} className="desktop-nav">
             <style>
               {`
                 @media (min-width: 1024px) {
