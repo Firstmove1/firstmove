@@ -19,10 +19,10 @@ const SLIDES = [
 
 const SPORTS_LIST = [
   { label: 'Core Sports',    sports: 'Athletics, Gymnastics, Swimming' },
-  { label: 'Martial Arts',   sports: 'Judo, Karate, Kickboxing, Taekwondo' },
-  { label: 'Mind & Movement', sports: 'Chess, Skating' },
-  { label: 'Racquet Sports', sports: 'Badminton, Padel, Pickleball, Squash, Table Tennis, Tennis' },
   { label: 'Team Sports',    sports: 'Basketball, Cricket, Football' },
+  { label: 'Racquet Sports', sports: 'Badminton, Padel, Pickleball, Squash, Table Tennis, Tennis' },
+  { label: 'Martial Arts',   sports: 'Judo, Karate, Kickboxing, Taekwondo' },
+  { label: 'Chess & Skating', sports: '' },
 ];
 
 const Hero = ({ isLoaded }) => {
@@ -253,7 +253,9 @@ const Hero = ({ isLoaded }) => {
                       letterSpacing: '0.06em',
                       color: 'rgba(255,255,255,0.55)'
                     }}>
-                      <span style={{ color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase' }}>{item.label}:</span>
+                      <span style={{ color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase' }}>
+                        {item.label}{item.sports ? ':' : ''}
+                      </span>
                       {item.sports}
                     </span>
                   ))}
