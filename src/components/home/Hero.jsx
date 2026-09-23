@@ -162,8 +162,8 @@ const Hero = ({ isLoaded }) => {
                 transition: 'all 0.7s ease-out 0.25s'
               }}>
                 Don't Just Watch<br />
-                <span style={{ color: 'var(--gold)' }}>Champions.</span><br />
-                Become One.
+                Champions.<br />
+                <span style={{ color: 'var(--gold)' }}>Become One.</span>
               </h1>
 
               {/* Subtext */}
