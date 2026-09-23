@@ -17,11 +17,12 @@ const SLIDES = [
   }
 ];
 
-const ALL_SPORTS = [
-  'Athletics', 'Badminton', 'Basketball', 'Chess', 'Cricket',
-  'Football', 'Gymnastics', 'Judo', 'Karate', 'Kickboxing',
-  'Padel', 'Pickleball', 'Skating', 'Squash', 'Swimming',
-  'Table Tennis', 'Taekwondo', 'Tennis'
+const SPORTS_LIST = [
+  { label: 'Core Sports',    sports: 'Athletics, Gymnastics, Swimming' },
+  { label: 'Martial Arts',   sports: 'Judo, Karate, Kickboxing, Taekwondo' },
+  { label: 'Mind & Movement', sports: 'Chess, Skating' },
+  { label: 'Racquet Sports', sports: 'Badminton, Padel, Pickleball, Squash, Table Tennis, Tennis' },
+  { label: 'Team Sports',    sports: 'Basketball, Cricket, Football' },
 ];
 
 const Hero = ({ isLoaded }) => {
@@ -243,20 +244,17 @@ const Hero = ({ isLoaded }) => {
             </div>
             <div className="sports-strip-wrap" style={{ paddingBottom: '32px' }}>
               <div style={{ display: 'flex' }}>
-                {/* Duplicate for seamless scroll */}
                 <div className="sports-tag">
-                  {[...ALL_SPORTS, ...ALL_SPORTS].map((sport, i) => (
+                  {[...SPORTS_LIST, ...SPORTS_LIST].map((item, i) => (
                     <span key={i} style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '20px',
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '18px',
-                      fontWeight: 400,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em',
-                      color: 'rgba(255,255,255,0.65)'
+                      display: 'inline-flex', alignItems: 'center', gap: '16px',
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '15px',
+                      letterSpacing: '0.06em',
+                      color: 'rgba(255,255,255,0.55)'
                     }}>
-                      {sport}
-                      <span style={{ color: 'var(--gold)', fontSize: '10px', opacity: 0.6 }}>◆</span>
+                      <span style={{ color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase' }}>{item.label}:</span>
+                      {item.sports}
                     </span>
                   ))}
                 </div>
