@@ -18,11 +18,11 @@ const SLIDES = [
 ];
 
 const SPORTS_LIST = [
-  { label: 'Core Sports', sports: 'Swimming, Gymnastics, Athletics' },
-  { label: 'Team Sports', sports: 'Cricket, Football, Basketball' },
-  { label: 'Racquet Sports', sports: 'Pickleball, Padel, Tennis, Squash, Badminton, Table Tennis' },
-  { label: 'Martial Arts', sports: 'Taekwondo, Karate, Kickboxing, Judo' },
+  { label: 'Core Sports', sports: 'Athletics, Gymnastics, Swimming' },
+  { label: 'Martial Arts', sports: 'Judo, Karate, Kickboxing, Taekwondo' },
   { label: 'Mind & Movement', sports: 'Chess, Skating' },
+  { label: 'Racquet Sports', sports: 'Badminton, Padel, Pickleball, Squash, Table Tennis, Tennis' },
+  { label: 'Team Sports', sports: 'Basketball, Cricket, Football' },
 ];
 
 const Hero = ({ isLoaded }) => {

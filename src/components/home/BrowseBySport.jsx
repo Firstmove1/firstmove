@@ -6,14 +6,14 @@ const BrowseBySport = () => {
   const navigate = useNavigate();
 
   const sports = [
+    { name: 'Badminton', icon: <Users size={24} />, color: 'var(--sapphire)', colorDim: 'var(--sapphire-dim)', id: 'badminton' },
+    { name: 'Basketball', icon: <Activity size={24} />, color: 'var(--gold)', colorDim: 'var(--gold-dim)', id: 'basketball' },
+    { name: 'Chess', icon: <Target size={24} />, color: 'var(--gold)', colorDim: 'var(--gold-dim)', id: 'chess' },
     { name: 'Cricket', icon: <Target size={24} />, color: 'var(--gold)', colorDim: 'var(--gold-dim)', id: 'cricket' },
     { name: 'Football', icon: <Activity size={24} />, color: 'var(--emerald)', colorDim: 'var(--emerald-dim)', id: 'football' },
-    { name: 'Badminton', icon: <Users size={24} />, color: 'var(--sapphire)', colorDim: 'var(--sapphire-dim)', id: 'badminton' },
-    { name: 'Tennis', icon: <Target size={24} />, color: 'var(--ruby)', colorDim: 'var(--ruby-dim)', id: 'tennis' },
-    { name: 'Basketball', icon: <Activity size={24} />, color: 'var(--gold)', colorDim: 'var(--gold-dim)', id: 'basketball' },
     { name: 'Swimming', icon: <Waves size={24} />, color: 'var(--sapphire)', colorDim: 'var(--sapphire-dim)', id: 'swimming' },
     { name: 'Table Tennis', icon: <Users size={24} />, color: 'var(--sapphire)', colorDim: 'var(--sapphire-dim)', id: 'table-tennis' },
-    { name: 'Chess', icon: <Target size={24} />, color: 'var(--gold)', colorDim: 'var(--gold-dim)', id: 'chess' },
+    { name: 'Tennis', icon: <Target size={24} />, color: 'var(--ruby)', colorDim: 'var(--ruby-dim)', id: 'tennis' },
   ];
 
   return (
