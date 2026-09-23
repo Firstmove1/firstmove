@@ -17,12 +17,11 @@ const SLIDES = [
   }
 ];
 
-const SPORTS_LIST = [
-  { label: 'Core Sports', sports: 'Athletics, Gymnastics, Swimming' },
-  { label: 'Martial Arts', sports: 'Judo, Karate, Kickboxing, Taekwondo' },
-  { label: 'Mind & Movement', sports: 'Chess, Skating' },
-  { label: 'Racquet Sports', sports: 'Badminton, Padel, Pickleball, Squash, Table Tennis, Tennis' },
-  { label: 'Team Sports', sports: 'Basketball, Cricket, Football' },
+const ALL_SPORTS = [
+  'Athletics', 'Badminton', 'Basketball', 'Chess', 'Cricket',
+  'Football', 'Gymnastics', 'Judo', 'Karate', 'Kickboxing',
+  'Padel', 'Pickleball', 'Skating', 'Squash', 'Swimming',
+  'Table Tennis', 'Taekwondo', 'Tennis'
 ];
 
 const Hero = ({ isLoaded }) => {
@@ -232,24 +231,32 @@ const Hero = ({ isLoaded }) => {
           </div>
         </div>
 
-        {/* ── Below Hero: Sports strip + Safety bar ── */}
+          {/* Below Hero: Sports strip + Safety bar */}
         <div style={{ position: 'relative', zIndex: 2, backgroundColor: 'rgba(10,25,47,0.95)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
 
           {/* Expert-led Coaching for ... */}
-          <div style={{ padding: '28px 0 0' }}>
+          <div style={{ padding: '32px 0 0' }}>
             <div className="container">
-              <p className="font-mono" style={{ fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '16px', opacity: 0.8 }}>
+              <p className="font-mono" style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px', opacity: 0.8 }}>
                 Expert-Led Coaching For
               </p>
             </div>
-            <div className="sports-strip-wrap" style={{ paddingBottom: '24px' }}>
+            <div className="sports-strip-wrap" style={{ paddingBottom: '32px' }}>
               <div style={{ display: 'flex' }}>
                 {/* Duplicate for seamless scroll */}
                 <div className="sports-tag">
-                  {[...SPORTS_LIST, ...SPORTS_LIST].map((item, i) => (
-                    <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.05em' }}>
-                      <span style={{ color: 'var(--gold)', fontWeight: 600 }}>{item.label}:</span>
-                      {item.sports}
+                  {[...ALL_SPORTS, ...ALL_SPORTS].map((sport, i) => (
+                    <span key={i} style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '20px',
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '18px',
+                      fontWeight: 400,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: 'rgba(255,255,255,0.65)'
+                    }}>
+                      {sport}
+                      <span style={{ color: 'var(--gold)', fontSize: '10px', opacity: 0.6 }}>◆</span>
                     </span>
                   ))}
                 </div>
@@ -258,7 +265,7 @@ const Hero = ({ isLoaded }) => {
           </div>
 
           {/* Safety bar */}
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '14px 0' }}>
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '16px 0' }}>
             <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <Shield size={14} color="var(--gold)" />
               <span className="font-mono" style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}>
