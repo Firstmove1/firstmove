@@ -238,7 +238,7 @@ const Hero = ({ isLoaded }) => {
           {/* Expert-led Coaching for ... */}
           <div style={{ padding: '32px 0 0' }}>
             <div className="container">
-              <p className="font-mono" style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px', opacity: 0.8 }}>
+              <p className="font-mono" style={{ fontSize: '14px', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '20px' }}>
                 Expert-Led Coaching For
               </p>
             </div>
