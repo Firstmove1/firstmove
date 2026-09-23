@@ -52,7 +52,7 @@ const Navbar = () => {
           -webkit-backdrop-filter: blur(24px) saturate(1.8);
           border-bottom: 1px solid rgba(255,255,255,0.3);
           box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04);
-          padding: 14px 0;
+          padding: 20px 0;
         }
 
         .nav-glass.scrolled {
@@ -61,14 +61,14 @@ const Navbar = () => {
           -webkit-backdrop-filter: blur(40px) saturate(2);
           border-bottom: 1px solid rgba(242, 101, 34, 0.12);
           box-shadow: 0 2px 32px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.6) inset;
-          padding: 12px 0;
+          padding: 16px 0;
         }
 
         .nav-glass.menu-open {
           background: rgba(255, 255, 255, 0.98);
           backdrop-filter: blur(40px);
           -webkit-backdrop-filter: blur(40px);
-          padding: 14px 0;
+          padding: 20px 0;
           border-bottom: 1px solid rgba(242, 101, 34, 0.15);
         }
 
@@ -139,7 +139,7 @@ const Navbar = () => {
           {/* Logo + Location */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <img src={logoImg} alt="FirstMove Logo" style={{ height: '34px', objectFit: 'contain' }} className="nav-logo" />
+              <img src={logoImg} alt="FirstMove Logo" style={{ height: '44px', objectFit: 'contain' }} className="nav-logo" />
             </Link>
             <div style={{ width: '1px', height: '20px', backgroundColor: 'rgba(10,25,47,0.12)' }} />
             <div className="nav-location" style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--chalk)' }}>
