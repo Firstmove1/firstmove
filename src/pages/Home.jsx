@@ -4,6 +4,7 @@ import Hero from '../components/home/Hero';
 import BrowseBySport from '../components/home/BrowseBySport';
 import CoachingBlocks from '../components/home/CoachingBlocks';
 import Services from '../components/home/Services';
+import StructuredDifference from '../components/home/StructuredDifference';
 import WhoWeServe from '../components/home/WhoWeServe';
 import Testimonial from '../components/home/Testimonial';
 import GetInTouchBanner from '../components/home/GetInTouchBanner';
@@ -172,11 +173,9 @@ const Home = ({ isLoaded }) => {
       <BrowseBySport />
       <CoachingBlocks />
       <Services />
+      <StructuredDifference />
       <WhoWeServe />
-      {/* <FeaturedVenues /> — Disabled per client request (task #9: Curated Spaces) */}
-      {/* <Pricing /> — Disabled per client request (task #9: Membership) */}
       <Testimonial />
-      {/* <AppBanner /> — Disabled per client request (task #12) */}
       <GetInTouchBanner />
     </div>
   );

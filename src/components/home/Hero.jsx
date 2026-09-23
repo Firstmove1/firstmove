@@ -1,22 +1,45 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ArrowRight, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+const SLIDES = [
+  {
+    url: 'https://images.pexels.com/photos/29873466/pexels-photo-29873466.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    alt: 'Joyful badminton player celebrating victory indoors'
+  },
+  {
+    url: 'https://images.pexels.com/photos/14605729/pexels-photo-14605729.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    alt: 'Boy playing badminton in sports hall'
+  },
+  {
+    url: 'https://images.pexels.com/photos/32944292/pexels-photo-32944292.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    alt: 'Group of men engaged in indoor badminton discussion'
+  }
+];
+
+const SPORTS_LIST = [
+  { label: 'Core Sports', sports: 'Swimming, Gymnastics, Athletics' },
+  { label: 'Team Sports', sports: 'Cricket, Football, Basketball' },
+  { label: 'Racquet Sports', sports: 'Pickleball, Padel, Tennis, Squash, Badminton, Table Tennis' },
+  { label: 'Martial Arts', sports: 'Taekwondo, Karate, Kickboxing, Judo' },
+  { label: 'Mind & Movement', sports: 'Chess, Skating' },
+];
+
 const Hero = ({ isLoaded }) => {
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [current, setCurrent] = useState(0);
   const [stats, setStats] = useState({ venues: 0, coaches: 0, cities: 0 });
   const heroRef = useRef(null);
+  const intervalRef = useRef(null);
 
+  // Auto-rotate slides
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!heroRef.current) return;
-      const rect = heroRef.current.getBoundingClientRect();
-      setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    intervalRef.current = setInterval(() => {
+      setCurrent(prev => (prev + 1) % SLIDES.length);
+    }, 5000);
+    return () => clearInterval(intervalRef.current);
   }, []);
 
+  // Stats counter
   useEffect(() => {
     if (!isLoaded) return;
     const duration = 2000;
@@ -36,105 +59,217 @@ const Hero = ({ isLoaded }) => {
     return () => clearInterval(timer);
   }, [isLoaded]);
 
-  const [particles, setParticles] = useState([]);
-  useEffect(() => {
-    const p = Array.from({ length: 24 }).map((_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      duration: 8 + Math.random() * 10,
-      delay: Math.random() * 5
-    }));
-    setParticles(p);
-  }, []);
-
   return (
-    <section ref={heroRef} style={{
-      minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative',
-      overflow: 'hidden', paddingTop: '120px', paddingBottom: '80px'
-    }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at top center, rgba(232,185,77,0.08) 0%, transparent 60%)', zIndex: -3 }} />
-      <div style={{ position: 'absolute', inset: 0, opacity: 0.15, zIndex: -2 }}>
-        <div style={{ position: 'absolute', width: '200%', height: '200%', top: '-50%', left: '-50%', background: 'conic-gradient(from 0deg, transparent 0deg, var(--gold) 45deg, transparent 90deg)', animation: 'conic-sweep 18s linear infinite' }} />
-      </div>
+    <>
+      <style>{`
+        @keyframes hero-img-kenburns {
+          from { transform: scale(1); }
+          to   { transform: scale(1.08); }
+        }
+        @keyframes hero-fade-in {
+          from { opacity: 0; transform: translateY(28px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes sports-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .hero-slide-img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0;
+          transition: opacity 1.2s ease;
+          animation: hero-img-kenburns 8s ease-out forwards;
+        }
+        .hero-slide-img.active {
+          opacity: 1;
+        }
+        .hero-dot {
+          width: 6px; height: 6px; border-radius: 50%;
+          background: rgba(255,255,255,0.35);
+          border: none; cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .hero-dot.active {
+          width: 24px; border-radius: 4px;
+          background: var(--gold);
+        }
+        .sports-tag {
+          display: flex;
+          gap: 48px;
+          animation: sports-scroll 30s linear infinite;
+          white-space: nowrap;
+        }
+        .sports-strip-wrap {
+          overflow: hidden;
+          mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+          -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+      `}</style>
 
-      <div style={{
-        position: 'absolute', top: '50%', left: '50%',
-        width: '15vw', height: '150vh',
-        background: 'linear-gradient(to bottom, rgba(59, 130, 246, 0.3), rgba(212, 175, 55, 0.3))',
-        animation: 'beam-spin 24s linear infinite',
-        zIndex: -2,
-        transformOrigin: 'center center'
-      }} />
+      <section ref={heroRef} style={{
+        minHeight: '100vh', display: 'flex', flexDirection: 'column',
+        position: 'relative', overflow: 'hidden'
+      }}>
 
-      <div style={{ position: 'absolute', width: '40vw', height: '40vw', borderRadius: '50%', background: 'var(--gold)', filter: 'blur(80px)', opacity: 0.15, top: '10%', left: '10%', animation: 'orb-drift 14s ease-in-out infinite alternate', zIndex: -2 }} />
-      <div style={{ position: 'absolute', width: '30vw', height: '30vw', borderRadius: '50%', background: 'var(--sapphire)', filter: 'blur(60px)', opacity: 0.15, bottom: '20%', right: '10%', animation: 'orb-drift 16s ease-in-out infinite alternate-reverse', zIndex: -2 }} />
+        {/* ── Image slideshow ── */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+          {SLIDES.map((slide, i) => (
+            <img
+              key={i}
+              src={slide.url}
+              alt={slide.alt}
+              className={`hero-slide-img${i === current ? ' active' : ''}`}
+            />
+          ))}
+          {/* Dark gradient overlay */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(to bottom, rgba(10,25,47,0.55) 0%, rgba(10,25,47,0.70) 50%, rgba(10,25,47,0.92) 100%)',
+            zIndex: 1
+          }} />
+        </div>
 
-      <div style={{
-        position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, var(--gold-dim) 0%, transparent 70%)',
-        borderRadius: '50%', pointerEvents: 'none', zIndex: -1,
-        left: mousePos.x, top: mousePos.y, transform: 'translate(-50%, -50%)',
-        transition: 'left 0.15s ease-out, top 0.15s ease-out', opacity: 0.3
-      }} />
+        {/* ── Hero content ── */}
+        <div style={{
+          position: 'relative', zIndex: 2,
+          flex: 1, display: 'flex', alignItems: 'center',
+          paddingTop: '120px', paddingBottom: '60px'
+        }}>
+          <div className="container" style={{ width: '100%' }}>
+            <div style={{ maxWidth: '860px' }}>
 
-      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.15, zIndex: -2 }} viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice">
-        <rect x="50" y="180" width="900" height="470" fill="none" stroke="var(--steel)" strokeWidth="2" strokeDasharray="2000" style={{ animation: 'svg-draw 3.5s ease-out forwards' }} />
-        <line x1="500" y1="180" x2="500" y2="650" stroke="var(--steel)" strokeWidth="2" strokeDasharray="2000" style={{ animation: 'svg-draw 3.5s ease-out forwards' }} />
-        <circle cx="500" cy="415" r="80" fill="none" stroke="var(--steel)" strokeWidth="2" strokeDasharray="2000" style={{ animation: 'svg-draw 3.5s ease-out forwards' }} />
-      </svg>
+              {/* Eyebrow */}
+              <div className="font-mono" style={{
+                fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase',
+                color: 'var(--gold)', marginBottom: '24px',
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 0.6s ease-out 0.1s'
+              }}>
+                Structured Coaching &nbsp;•&nbsp; Certified Mentors &nbsp;•&nbsp; Tracked Growth
+              </div>
 
-      {particles.map(p => (
-        <div key={p.id} style={{
-          position: 'absolute', bottom: '-10px', left: p.left, width: '3px', height: '3px',
-          backgroundColor: 'var(--gold)', borderRadius: '50%', opacity: 0,
-          animation: `hero-fade-up ${p.duration}s linear ${p.delay}s infinite`
-        }} />
-      ))}
+              {/* Headline */}
+              <h1 className="font-display" style={{
+                fontSize: 'clamp(48px, 7vw, 96px)',
+                color: '#fff', lineHeight: 0.95, marginBottom: '28px',
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? 'translateY(0)' : 'translateY(28px)',
+                transition: 'all 0.7s ease-out 0.25s'
+              }}>
+                Don't Just Watch<br />
+                <span style={{ color: 'var(--gold)' }}>Champions.</span><br />
+                Become One.
+              </h1>
 
-      <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+              {/* Subtext */}
+              <p style={{
+                fontSize: 'clamp(15px, 1.5vw, 18px)', color: 'rgba(255,255,255,0.75)',
+                maxWidth: '640px', lineHeight: 1.8, marginBottom: '44px',
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? 'translateY(0)' : 'translateY(24px)',
+                transition: 'all 0.7s ease-out 0.4s'
+              }}>
+                Raw passion needs structured discipline. Whether your child is discovering their first sport in school or you're mastering your technique — our structured curriculum and passionate coaches turn practice into the best hour of your week.
+              </p>
 
-          <div className="eyebrow" style={{ color: 'var(--gold)', marginBottom: '24px', opacity: isLoaded ? 1 : 0, transform: isLoaded ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out 0.2s' }}>
-            Premium Sports Coaching & Academy
+              {/* CTA Buttons */}
+              <div style={{
+                display: 'flex', gap: '16px', flexWrap: 'wrap',
+                opacity: isLoaded ? 1 : 0,
+                transform: isLoaded ? 'translateY(0)' : 'translateY(24px)',
+                transition: 'all 0.7s ease-out 0.55s'
+              }}>
+                <Link to="/learn-a-sport/schools" style={{
+                  backgroundColor: 'var(--gold)', color: '#fff',
+                  padding: '16px 36px', borderRadius: '8px',
+                  fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700,
+                  textTransform: 'uppercase', letterSpacing: '0.1em',
+                  textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px',
+                  transition: 'all 0.25s ease',
+                  boxShadow: '0 4px 20px rgba(242,101,34,0.45)'
+                }}
+                  onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 28px rgba(242,101,34,0.55)'; }}
+                  onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(242,101,34,0.45)'; }}
+                >
+                  For Schools <ArrowRight size={15} />
+                </Link>
+
+                <Link to="/learn-a-sport/private" style={{
+                  backgroundColor: 'rgba(255,255,255,0.12)', color: '#fff',
+                  padding: '16px 36px', borderRadius: '8px',
+                  fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 700,
+                  textTransform: 'uppercase', letterSpacing: '0.1em',
+                  textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px',
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  backdropFilter: 'blur(8px)',
+                  transition: 'all 0.25s ease'
+                }}
+                  onMouseOver={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.22)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                  onMouseOut={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                >
+                  For Private Coaching
+                </Link>
+              </div>
+
+            </div>
+
+            {/* Slide dots */}
+            <div style={{ display: 'flex', gap: '8px', marginTop: '48px' }}>
+              {SLIDES.map((_, i) => (
+                <button
+                  key={i}
+                  className={`hero-dot${i === current ? ' active' : ''}`}
+                  onClick={() => { setCurrent(i); clearInterval(intervalRef.current); }}
+                  aria-label={`Slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Below Hero: Sports strip + Safety bar ── */}
+        <div style={{ position: 'relative', zIndex: 2, backgroundColor: 'rgba(10,25,47,0.95)', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+
+          {/* Expert-led Coaching for ... */}
+          <div style={{ padding: '28px 0 0' }}>
+            <div className="container">
+              <p className="font-mono" style={{ fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '16px', opacity: 0.8 }}>
+                Expert-Led Coaching For
+              </p>
+            </div>
+            <div className="sports-strip-wrap" style={{ paddingBottom: '24px' }}>
+              <div style={{ display: 'flex' }}>
+                {/* Duplicate for seamless scroll */}
+                <div className="sports-tag">
+                  {[...SPORTS_LIST, ...SPORTS_LIST].map((item, i) => (
+                    <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'rgba(255,255,255,0.55)', letterSpacing: '0.05em' }}>
+                      <span style={{ color: 'var(--gold)', fontWeight: 600 }}>{item.label}:</span>
+                      {item.sports}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
-          <h1 className="font-display" style={{ fontSize: 'clamp(56px, 9vw, 110px)', marginBottom: '24px', opacity: isLoaded ? 1 : 0, transform: isLoaded ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out 0.4s' }}>
-            LEARN. PLAY. TRAIN. <br /> <span style={{ color: 'var(--gold)' }}>COMPETE. GROW.</span>
-          </h1>
-
-          <p style={{ fontSize: '20px', color: 'var(--steel)', marginBottom: '48px', maxWidth: '700px', margin: '0 auto 48px', opacity: isLoaded ? 1 : 0, transform: isLoaded ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out 0.6s' }}>
-            Elevate your game with elite coaches, structured programs for all ages, and world-class facilities. It's time to make your First Move.
-          </p>
-
-          <div style={{
-            display: 'flex', gap: '24px', justifyContent: 'center',
-            opacity: isLoaded ? 1 : 0, transform: isLoaded ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.6s ease-out 0.8s'
-          }}>
-            <Link to="/sports" style={{
-              backgroundColor: 'var(--gold)', color: 'var(--chalk)', padding: '16px 32px',
-              borderRadius: '8px', fontFamily: 'var(--font-mono)', fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
-              textDecoration: 'none', transition: 'var(--transition-fast)', display: 'inline-block'
-            }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
-              Explore Sports
-            </Link>
-
-            <Link to="/learn-a-sport" style={{
-              backgroundColor: 'transparent', color: 'var(--chalk)', padding: '16px 32px', border: '1px solid var(--panel-2)',
-              borderRadius: '8px', fontFamily: 'var(--font-mono)', fontSize: '14px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
-              textDecoration: 'none', transition: 'var(--transition-fast)', display: 'inline-block'
-            }} onMouseOver={e => {
-              e.currentTarget.style.borderColor = 'var(--gold)';
-              e.currentTarget.style.transform = 'scale(1.05)';
-            }} onMouseOut={e => {
-              e.currentTarget.style.borderColor = 'var(--panel-2)';
-              e.currentTarget.style.transform = 'scale(1)';
-            }}>
-              Get Started
-            </Link>
+          {/* Safety bar */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '14px 0' }}>
+            <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Shield size={14} color="var(--gold)" />
+              <span className="font-mono" style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}>
+                Certified On-Campus Coaches &nbsp;·&nbsp; Structured Safety Standards &nbsp;·&nbsp; Background-Checked Professionals
+              </span>
+            </div>
           </div>
 
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

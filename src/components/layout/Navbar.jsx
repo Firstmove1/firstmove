@@ -9,17 +9,15 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // New flat menu per client request (11/09/2026)
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Schools', path: '/learn-a-sport/schools' },
@@ -30,91 +28,148 @@ const Navbar = () => {
     { name: 'Contact Us', path: '/contact' }
   ];
 
-  const getLinkColor = (path) => {
-    if (path === '/' && location.pathname === '/') return 'var(--gold)';
-    if (path !== '/' && location.pathname.startsWith(path)) return 'var(--gold)';
-    return 'var(--steel)';
+  const isActive = (path) => {
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname.startsWith(path)) return true;
+    return false;
   };
 
   return (
     <>
-      <nav style={{
-        position: 'fixed', top: 0, width: '100%', zIndex: 100, padding: '18px 0',
-        transition: 'var(--transition-smooth)',
-        backgroundColor: scrolled || mobileMenuOpen ? 'rgba(255, 255, 255, 0.97)' : 'transparent',
-        backdropFilter: scrolled || mobileMenuOpen ? 'blur(24px)' : 'none',
-        borderBottom: scrolled || mobileMenuOpen ? '1px solid var(--panel-2)' : 'none',
-      }}>
+      <style>{`
+        .nav-glass {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 100;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Always glass — stronger when scrolled */
+        .nav-glass.at-top {
+          background: rgba(255, 255, 255, 0.72);
+          backdrop-filter: blur(24px) saturate(1.8);
+          -webkit-backdrop-filter: blur(24px) saturate(1.8);
+          border-bottom: 1px solid rgba(255,255,255,0.3);
+          box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04);
+          padding: 14px 0;
+        }
+
+        .nav-glass.scrolled {
+          background: rgba(255, 255, 255, 0.88);
+          backdrop-filter: blur(40px) saturate(2);
+          -webkit-backdrop-filter: blur(40px) saturate(2);
+          border-bottom: 1px solid rgba(242, 101, 34, 0.12);
+          box-shadow: 0 2px 32px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.6) inset;
+          padding: 12px 0;
+        }
+
+        .nav-glass.menu-open {
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(40px);
+          -webkit-backdrop-filter: blur(40px);
+          padding: 14px 0;
+          border-bottom: 1px solid rgba(242, 101, 34, 0.15);
+        }
+
+        .nav-link {
+          font-family: var(--font-mono);
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          text-decoration: none;
+          color: rgba(10, 25, 47, 0.65);
+          font-weight: 500;
+          padding-bottom: 4px;
+          border-bottom: 2px solid transparent;
+          transition: color 0.2s ease, border-color 0.2s ease;
+          white-space: nowrap;
+        }
+
+        .nav-link:hover {
+          color: var(--gold);
+        }
+
+        .nav-link.active {
+          color: var(--gold);
+          border-bottom-color: var(--gold);
+          font-weight: 700;
+        }
+
+        .nav-cta {
+          display: inline-block;
+          text-decoration: none;
+          text-align: center;
+          background: var(--gold);
+          color: #fff;
+          padding: 10px 22px;
+          border-radius: 6px;
+          font-family: var(--font-mono);
+          font-size: 12px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+          white-space: nowrap;
+          box-shadow: 0 2px 12px rgba(242,101,34,0.35);
+        }
+
+        .nav-cta:hover {
+          background: #d94f0e;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 20px rgba(242,101,34,0.4);
+        }
+
+        .desktop-nav { display: none !important; }
+
+        @media (min-width: 1024px) {
+          .desktop-nav { display: flex !important; }
+          .mobile-nav-toggle { display: none !important; }
+        }
+
+        @media (max-width: 400px) {
+          .nav-logo { height: 24px !important; }
+          .nav-location { display: none !important; }
+        }
+      `}</style>
+
+      <nav className={`nav-glass ${mobileMenuOpen ? 'menu-open' : scrolled ? 'scrolled' : 'at-top'}`}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '24px' }}>
+
           {/* Logo + Location */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <img src={logoImg} alt="FirstMove Logo" style={{ height: '32px', objectFit: 'contain' }} className="nav-logo" />
+              <img src={logoImg} alt="FirstMove Logo" style={{ height: '34px', objectFit: 'contain' }} className="nav-logo" />
             </Link>
-            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--panel-2)' }} />
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--chalk)' }}>
-              <MapPin size={16} color="var(--gold)" />
-              <span className="font-mono nav-mumbai-text" style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Mumbai</span>
-              <ChevronDown size={14} color="var(--steel)" className="nav-chevron" />
+            <div style={{ width: '1px', height: '20px', backgroundColor: 'rgba(10,25,47,0.12)' }} />
+            <div className="nav-location" style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: 'var(--chalk)' }}>
+              <MapPin size={14} color="var(--gold)" />
+              <span className="font-mono" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgba(10,25,47,0.55)' }}>Mumbai</span>
+              <ChevronDown size={12} color="rgba(10,25,47,0.4)" />
             </div>
-            <style>{`
-              @media (max-width: 400px) {
-                .nav-logo { height: 24px !important; }
-                .nav-mumbai-text { display: none !important; }
-                .nav-chevron { display: none !important; }
-              }
-            `}</style>
           </div>
 
           {/* Desktop Nav */}
-          <div className="desktop-nav" style={{ display: 'none', alignItems: 'center', gap: '16px', flexWrap: 'nowrap', justifyContent: 'flex-end' }}>
-            <style>{`
-              @media (min-width: 1024px) {
-                .desktop-nav { display: flex !important; }
-                .mobile-nav-toggle { display: none !important; }
-              }
-              .desktop-nav a { white-space: nowrap; }
-            `}</style>
-
+          <div className="desktop-nav" style={{ alignItems: 'center', gap: '20px', flexWrap: 'nowrap', justifyContent: 'flex-end' }}>
             {navLinks.map((link, idx) => (
               <Link
                 key={idx}
                 to={link.path}
-                className="font-mono"
-                style={{
-                  fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em',
-                  color: getLinkColor(link.path), textDecoration: 'none', transition: 'var(--transition-fast)',
-                  fontWeight: getLinkColor(link.path) === 'var(--gold)' ? 700 : 500,
-                  borderBottom: getLinkColor(link.path) === 'var(--gold)' ? '2px solid var(--gold)' : '2px solid transparent',
-                  paddingBottom: '2px'
-                }}
-                onMouseOver={e => e.currentTarget.style.color = 'var(--gold)'}
-                onMouseOut={e => e.currentTarget.style.color = getLinkColor(link.path)}
+                className={`nav-link${isActive(link.path) ? ' active' : ''}`}
               >
                 {link.name}
               </Link>
             ))}
-
-            <Link to="/contact" style={{
-              display: 'inline-block', textDecoration: 'none', textAlign: 'center',
-              backgroundColor: 'var(--gold)', color: '#fff', padding: '10px 20px', border: 'none', cursor: 'pointer', borderRadius: '4px',
-              fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
-              transition: 'var(--transition-fast)', whiteSpace: 'nowrap'
-            }}
-              onMouseOver={e => e.currentTarget.style.opacity = '0.85'}
-              onMouseOut={e => e.currentTarget.style.opacity = '1'}
-            >
-              Get Started
-            </Link>
+            <Link to="/contact" className="nav-cta">Get Started</Link>
           </div>
 
           {/* Mobile Toggle */}
           <div className="mobile-nav-toggle" style={{ display: 'block' }}>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              style={{ background: 'none', border: 'none', color: 'black', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+              style={{ background: 'none', border: 'none', color: 'var(--chalk)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             >
-              {mobileMenuOpen ? <X size={24} color="black" /> : <Menu size={24} color="black" />}
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
@@ -123,20 +178,23 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div style={{
         position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 99,
-        backgroundColor: 'var(--panel)',
+        background: 'rgba(255,255,255,0.97)',
+        backdropFilter: 'blur(40px)',
+        WebkitBackdropFilter: 'blur(40px)',
         transform: mobileMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
         transition: 'transform 0.5s cubic-bezier(0.77, 0, 0.175, 1)',
         paddingTop: '100px', overflowY: 'auto'
       }}>
         <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {navLinks.map((link, idx) => (
-            <div key={idx} style={{ borderBottom: '1px solid var(--panel-2)', paddingBottom: '16px' }}>
+            <div key={idx} style={{ borderBottom: '1px solid rgba(10,25,47,0.07)', paddingBottom: '16px' }}>
               <Link
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className="font-display"
                 style={{
-                  fontSize: '28px', color: getLinkColor(link.path),
+                  fontSize: '28px',
+                  color: isActive(link.path) ? 'var(--gold)' : 'var(--chalk)',
                   textDecoration: 'none', display: 'block'
                 }}
               >
@@ -146,7 +204,7 @@ const Navbar = () => {
           ))}
           <Link to="/contact" style={{
             display: 'block', textAlign: 'center', textDecoration: 'none',
-            backgroundColor: 'var(--gold)', color: '#fff', padding: '16px', border: 'none', cursor: 'pointer', borderRadius: '4px',
+            backgroundColor: 'var(--gold)', color: '#fff', padding: '16px', borderRadius: '6px',
             fontFamily: 'var(--font-mono)', fontSize: '16px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em',
             marginTop: '24px'
           }} onClick={() => setMobileMenuOpen(false)}>
