@@ -19,20 +19,20 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 
         /* Always glass — stronger when scrolled */
         .nav-glass.at-top {
-          background: rgba(255, 255, 255, 0.72);
-          backdrop-filter: blur(24px) saturate(1.8);
-          -webkit-backdrop-filter: blur(24px) saturate(1.8);
-          border-bottom: 1px solid rgba(255,255,255,0.3);
-          box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.04);
+          background: #ffffff;
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          border-bottom: 1px solid rgba(0,0,0,0.07);
+          box-shadow: 0 2px 16px rgba(0,0,0,0.06);
           padding: 22px 0;
         }
 
         .nav-glass.scrolled {
-          background: rgba(255, 255, 255, 0.88);
-          backdrop-filter: blur(40px) saturate(2);
-          -webkit-backdrop-filter: blur(40px) saturate(2);
+          background: #ffffff;
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
           border-bottom: 1px solid rgba(242, 101, 34, 0.12);
-          box-shadow: 0 2px 32px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.6) inset;
+          box-shadow: 0 2px 24px rgba(0,0,0,0.08);
           padding: 18px 0;
         }
 
