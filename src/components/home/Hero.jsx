@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 
 const SLIDES = [
   {
-    url: 'https://images.pexels.com/photos/29873466/pexels-photo-29873466.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    alt: 'Joyful badminton player celebrating victory indoors'
+    url: 'https://images.unsplash.com/photo-1551958219-acbc43d28f9b?q=80&w=1920&auto=format&fit=crop',
+    alt: 'Kids playing football'
   },
   {
-    url: 'https://images.pexels.com/photos/14605729/pexels-photo-14605729.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    alt: 'Boy playing badminton in sports hall'
+    url: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?q=80&w=1920&auto=format&fit=crop',
+    alt: 'Kids swimming lesson'
   },
   {
-    url: 'https://images.pexels.com/photos/32944292/pexels-photo-32944292.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    alt: 'Group of men engaged in indoor badminton discussion'
+    url: 'https://images.unsplash.com/photo-1526676037777-05a232554f77?q=80&w=1920&auto=format&fit=crop',
+    alt: 'Young athletes in sports training'
   }
 ];
 
