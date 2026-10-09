@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,18 +8,27 @@
   <meta name="description" content="First Move Sports — We're lacing up. Be the first to hear the whistle blow." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --navy:   #0A192F;
-      --orange: #F26522;
-      --white:  #FFFFFF;
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html, body {
+    :root {
+      --navy: #0A192F;
+      --orange: #fc8b00;
+      --white: #FFFFFF;
+    }
+
+    html,
+    body {
       height: 100%;
       font-family: 'Roboto', sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -33,7 +43,8 @@
     }
 
     .bg-img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center top;
     }
@@ -42,12 +53,10 @@
     .bg-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        105deg,
-        rgba(10,25,47,0.88) 0%,
-        rgba(10,25,47,0.65) 50%,
-        rgba(10,25,47,0.5) 100%
-      );
+      background: linear-gradient(105deg,
+          rgba(10, 25, 47, 0.88) 0%,
+          rgba(10, 25, 47, 0.65) 50%,
+          rgba(10, 25, 47, 0.5) 100%);
     }
 
     /* ── PAGE ── */
@@ -69,29 +78,12 @@
     }
 
     .logo {
-      display: inline-flex;
-      align-items: center;
-      background: #0A192F;
-      border: 2px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
-      padding: 8px 18px;
-      gap: 0px;
-      line-height: 1;
-    }
-    .logo-first {
-      font-family: 'Oswald', sans-serif;
-      font-size: 26px;
-      font-weight: 700;
-      color: #FFFFFF;
-      letter-spacing: -0.5px;
-    }
-    .logo-move {
-      font-family: 'Oswald', sans-serif;
-      font-size: 26px;
-      font-weight: 700;
-      font-style: italic;
-      color: #F26522;
-      letter-spacing: -0.5px;
+      height: 110px;
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+      /* pull logo left to align its visual edge with the headline below */
+      margin-left: -12px;
     }
 
     .domain-chips {
@@ -104,8 +96,8 @@
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       padding: 5px 14px;
       border-radius: 999px;
     }
@@ -120,7 +112,6 @@
     }
 
     /* ── LEFT: TEXT ── */
-    .left { }
 
     .status-row {
       display: flex;
@@ -131,7 +122,8 @@
     }
 
     .pulse-dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--orange);
       animation: pulse 2s ease-in-out infinite;
@@ -143,7 +135,7 @@
       font-weight: 500;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255, 255, 255, 0.45);
     }
 
     .headline {
@@ -155,14 +147,18 @@
       color: var(--white);
       margin-bottom: 28px;
       animation: fade-up 0.9s 0.2s both;
+      /* slight pull to align with Oswald's natural glyph left edge */
+      margin-left: -4px;
     }
 
-    .headline span { color: var(--orange); }
+    .headline span {
+      color: var(--orange);
+    }
 
     .tagline {
       font-size: clamp(15px, 1.3vw, 18px);
       font-weight: 300;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255, 255, 255, 0.9);
       line-height: 1.8;
       max-width: 460px;
       animation: fade-up 0.9s 0.35s both;
@@ -170,10 +166,10 @@
 
     /* ── RIGHT: FORM CARD ── */
     .form-card {
-      background: rgba(255,255,255,0.07);
+      background: rgba(255, 255, 255, 0.07);
       backdrop-filter: blur(32px);
       -webkit-backdrop-filter: blur(32px);
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 20px;
       padding: 32px 28px;
       animation: fade-up 0.9s 0.3s both;
@@ -181,7 +177,7 @@
 
     .whistle {
       font-family: 'Oswald', sans-serif;
-      font-size: clamp(18px, 1.6vw, 22px);
+      font-size: clamp(22px, 2vw, 28px);
       font-weight: 600;
       color: var(--white);
       line-height: 1.2;
@@ -189,15 +185,21 @@
       margin-bottom: 4px;
     }
 
-    .whistle span { color: var(--orange); }
+    .whistle span {
+      color: #fc8b00;
+    }
 
     .whistle-sub {
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
       margin-bottom: 20px;
     }
 
-    .form { display: flex; flex-direction: column; gap: 12px; }
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
     .form-row {
       display: grid;
@@ -205,7 +207,11 @@
       gap: 12px;
     }
 
-    .field { display: flex; flex-direction: column; gap: 4px; }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
     .field label {
       font-family: 'Poppins', sans-serif;
@@ -213,18 +219,18 @@
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .field input,
     .field textarea {
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 8px;
       padding: 10px 14px;
       font-family: 'Roboto', sans-serif;
       font-size: 13px;
       color: var(--white);
-      background: rgba(255,255,255,0.07);
+      background: rgba(255, 255, 255, 0.07);
       outline: none;
       transition: border-color 0.25s, background 0.25s;
       resize: none;
@@ -232,16 +238,18 @@
 
     .field input::placeholder,
     .field textarea::placeholder {
-      color: rgba(255,255,255,0.25);
+      color: rgba(255, 255, 255, 0.25);
     }
 
     .field input:focus,
     .field textarea:focus {
       border-color: var(--orange);
-      background: rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.12);
     }
 
-    .field textarea { height: 72px; }
+    .field textarea {
+      height: 72px;
+    }
 
     .submit-btn {
       background: var(--orange);
@@ -256,59 +264,99 @@
       text-transform: uppercase;
       cursor: pointer;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(242,101,34,0.4);
+      box-shadow: 0 4px 20px rgba(242, 101, 34, 0.4);
       margin-top: 4px;
     }
 
     .submit-btn:hover {
       background: #d94f0e;
       transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(242,101,34,0.5);
+      box-shadow: 0 6px 24px rgba(242, 101, 34, 0.5);
     }
 
     .success-msg {
       display: none;
       align-items: center;
       gap: 8px;
-      background: rgba(46,125,50,0.15);
-      border: 1px solid rgba(46,125,50,0.4);
+      background: rgba(46, 125, 50, 0.15);
+      border: 1px solid rgba(46, 125, 50, 0.4);
       border-radius: 8px;
-      padding: 12px 16px;
+      padding: 14px 16px;
       color: #81C784;
       font-family: 'Poppins', sans-serif;
-      font-size: 12px;
+      font-size: 15px;
       font-weight: 500;
       margin-top: 8px;
+      line-height: 1.5;
     }
 
     /* ── ANIMATIONS ── */
     @keyframes fade-up {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes pulse {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.3; transform: scale(0.7); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.3;
+        transform: scale(0.7);
+      }
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      html, body { overflow: auto; }
-      .page { height: auto; min-height: 100vh; }
-      .columns { grid-template-columns: 1fr; gap: 40px; padding-bottom: 60px; }
-      .form-card { max-width: 100%; }
+
+      html,
+      body {
+        overflow: auto;
+      }
+
+      .page {
+        height: auto;
+        min-height: 100vh;
+      }
+
+      .columns {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-bottom: 60px;
+      }
+
+      .form-card {
+        max-width: 100%;
+      }
+
       .bg-overlay {
-        background: linear-gradient(to bottom, rgba(10,25,47,0.92) 0%, rgba(10,25,47,0.85) 100%);
+        background: linear-gradient(to bottom, rgba(10, 25, 47, 0.92) 0%, rgba(10, 25, 47, 0.85) 100%);
       }
     }
 
     @media (max-width: 480px) {
-      .form-row { grid-template-columns: 1fr; }
-      .domain-chips { display: none; }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .domain-chips {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Full-page background -->
@@ -321,13 +369,7 @@
 
     <!-- Top bar -->
     <div class="topbar">
-      <div class="logo">
-        <span class="logo-first">First</span><span class="logo-move">Move</span>
-      </div>
-      <div class="domain-chips">
-        <div class="chip">firstmove.co.in</div>
-        <div class="chip">firstmovesports.com</div>
-      </div>
+      <img src="Transparent_FirstMove_Logo_White.png" alt="FirstMove" class="logo" />
     </div>
 
     <!-- Content columns -->
@@ -335,10 +377,6 @@
 
       <!-- LEFT: Brand content -->
       <div class="left">
-        <div class="status-row">
-          <div class="pulse-dot"></div>
-          <span class="status-text">We're getting ready</span>
-        </div>
 
         <h1 class="headline">
           Lacing<br /><span>Up.</span>
@@ -381,7 +419,7 @@
           <button type="submit" id="submit-btn" class="submit-btn">Mark. Set. Go! 🏁</button>
 
           <div class="success-msg" id="success-msg">
-            ✅ &nbsp;You're on the list! We'll blow the whistle soon.
+            ✅ &nbsp;Thanks for joining! We'll drop you an update very soon.
           </div>
         </form>
       </div>
@@ -390,43 +428,44 @@
   </div>
 
   <script>
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycby4BofGkNulIud-LZE6HeavUkCiSNKtl4i6SkqsgDtgbZyAt_9LsG2pe_g2gkKYGFZRDA/exec';
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycby4BofGkNulIud-LZE6HeavUkCiSNKtl4i6SkqsgDtgbZyAt_9LsG2pe_g2gkKYGFZRDA/exec';
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form    = document.getElementById('contact-form');
-    const btn     = document.getElementById('submit-btn');
-    const success = document.getElementById('success-msg');
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contact-form');
+      const btn = document.getElementById('submit-btn');
+      const success = document.getElementById('success-msg');
 
-    const data = {
-      name:   form.querySelector('input[type="text"]').value,
-      number: form.querySelector('input[type="tel"]').value,
-      email:  form.querySelector('input[type="email"]').value,
-      query:  form.querySelector('textarea').value
-    };
+      const data = {
+        name: form.querySelector('input[type="text"]').value,
+        number: form.querySelector('input[type="tel"]').value,
+        email: form.querySelector('input[type="email"]').value,
+        query: form.querySelector('textarea').value
+      };
 
-    btn.textContent = 'Sending... ⏳';
-    btn.disabled = true;
+      btn.textContent = 'Sending... ⏳';
+      btn.disabled = true;
 
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-    .then(() => {
-      success.style.display = 'flex';
-      form.querySelectorAll('input, textarea').forEach(el => el.value = '');
-      btn.textContent = 'Mark. Set. Go! 🏁';
-      btn.disabled = false;
-    })
-    .catch(() => {
-      success.style.display = 'flex';
-      btn.textContent = 'Mark. Set. Go! 🏁';
-      btn.disabled = false;
-    });
-  }
+      fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(() => {
+          success.style.display = 'flex';
+          form.querySelectorAll('input, textarea').forEach(el => el.value = '');
+          btn.textContent = 'Mark. Set. Go! 🏁';
+          btn.disabled = false;
+        })
+        .catch(() => {
+          success.style.display = 'flex';
+          btn.textContent = 'Mark. Set. Go! 🏁';
+          btn.disabled = false;
+        });
+    }
   </script>
 
 </body>
+
 </html>
